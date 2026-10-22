@@ -1,0 +1,141 @@
+# Checks that run before each commit, and that you can run at any time with `pre-commit run --all-files`.
+#
+# This repository holds Smarter manifests, a few configuration files, and, in scripts/, the scripts that
+# Smarter may run when it loads the repository. The hooks check that every file is tidy, valid YAML, free
+# of typos and private keys, that each manifest matches the JSON Schema of its kind, which the Smarter
+# platform publishes, and that the shell scripts are free of common mistakes.
+#
+# Dependabot keeps the hooks' versions current: see .github/dependabot.yml.
+default_install_hook_types: [pre-commit]
+default_stages: [pre-commit, manual]
+
+repos:
+  # General housekeeping.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-yaml
+      # manifest templates, *.yaml.tpl, are YAML too.
+      - id: check-yaml
+        name: check yaml (manifest templates)
+        types: [file]
+        files: \.ya?ml\.tpl$
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+
+  # YAML style. See .yamllint.yaml.
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        types: [file]
+        files: \.ya?ml(\.tpl)?$
+
+  # Typos, in the descriptions and prompts as much as anywhere.
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        # Words that are correct in the manifests' other languages, e.g. French in plugins/websearch/.
+        args: [--ignore-words-list=informations]
+
+  # Common mistakes in shell scripts: scripts/*.sh.
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
+  # Each manifest must match the JSON Schema of its kind. The Smarter platform publishes them, in
+  # https://github.com/smarter-sh/smarter/tree/main/smarter/smarter/apps/api/v1/contract/sam
+  # Each folder holds manifests of one kind.
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.38.2
+    hooks:
+      - id: check-jsonschema
+        name: validate Budget manifests
+        files: ^budgets/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Budget.schema.json
+      - id: check-jsonschema
+        name: validate CustomDomain manifests
+        files: ^custom-domains/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/CustomDomain.schema.json
+      - id: check-jsonschema
+        name: validate Guardrail manifests
+        files: ^guardrails/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Guardrail.schema.json
+      - id: check-jsonschema
+        name: validate LLMClient manifests
+        files: ^llm-clients/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMClient.schema.json
+      - id: check-jsonschema
+        name: validate LLMHostCompute manifests
+        files: ^llmhost-computes/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMHostCompute.schema.json
+      - id: check-jsonschema
+        name: validate LLMHost manifests
+        files: ^llmhosts/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMHost.schema.json
+      - id: check-jsonschema
+        name: validate MCPClient manifests
+        types_or: [file]
+        files: ^mcp-clients/.*\.ya?ml(\.tpl)?$
+        args:
+          - --default-filetype
+          - yaml
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/MCPClient.schema.json
+      - id: check-jsonschema
+        name: validate Plugin manifests
+        files: ^plugins/static/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Plugin.schema.json
+      - id: check-jsonschema
+        name: validate SkillPlugin manifests
+        files: ^plugins/skill/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/SkillPlugin.schema.json
+      - id: check-jsonschema
+        name: validate WebsearchPlugin manifests
+        files: ^plugins/websearch/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/WebsearchPlugin.schema.json
+      - id: check-jsonschema
+        name: validate ImageSearchPlugin manifests
+        files: ^plugins/image-search/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/ImageSearchPlugin.schema.json
+      - id: check-jsonschema
+        name: validate Proxy manifests
+        files: ^proxies/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Proxy.schema.json
+      - id: check-jsonschema
+        name: validate Vectorstore manifests
+        files: ^vectorstores/.*\.ya?ml$
+        args:
+          - --schemafile
+          - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Vectorstore.schema.json

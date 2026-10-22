@@ -1,0 +1,19 @@
+# The scripts that Smarter runs when it loads this repository, with manage.py load_from_github --run_scripts. Only
+# the scripts listed here run. Each runs either before the manifests are applied (stage: pre), or after (stage:
+# post), in this order. This repository has none yet: see README.md in this folder before you add one.
+#
+# For example:
+#
+# scripts:
+#   - path: create-example-database.sh  # in scripts/, executable, with a #! line
+#     stage: pre  # before any manifest is applied
+#     description: >-
+#       Create the database that a SqlConnection in this repository connects to, so that it exists when the
+#       SqlConnection is applied.
+#     args: [--quiet]  # optional: the script's arguments
+#     timeout: 300  # optional: seconds, from 1 to 3600. The default is 300
+#   - path: seed-example-data.sh
+#     stage: post  # after every manifest is applied, and the LLMClients deployed
+#     description: Seed the example data, through the platform's api.
+#     args: [--count, "10"]
+scripts: []

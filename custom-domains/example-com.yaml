@@ -1,0 +1,25 @@
+---
+# A built-in example CustomDomain, owned by the Smarter admin. manage.py
+# initialize_platform applies it from this repository, with load_from_github.
+#
+# Its verification is expected to fail: nobody can delegate example.com's NS
+# records to Smarter, and it has no AWS Route53 hosted zone until it is deployed.
+apiVersion: smarter.sh/v1
+kind: CustomDomain
+metadata:
+  name: example_com
+  description: An example custom domain. Smarter does not control example.com, so it cannot be verified.
+  version: 1.0.0
+  tags:
+    - example
+    - custom-domain
+    - builtin
+  annotations:
+    - smarter.sh/custom-domain/purpose: example
+    - smarter.sh/custom-domain/builtin: "true"
+    - smarter.sh/custom-domain/installed-by: initialize_platform
+    - smarter.sh/custom-domain/expected-verification: Failed
+    - smarter.sh/custom-domain/documentation: https://docs.smarter.sh/smarter-resources/smarter-custom-domain.html
+spec:
+  config:
+    domainName: example.com
