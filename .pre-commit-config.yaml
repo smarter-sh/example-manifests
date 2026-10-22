@@ -139,3 +139,14 @@ repos:
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Vectorstore.schema.json
+
+  # Each LLMClient's system prompt names only the tools of the extensions that it lists.
+  # See .github/hooks/check_llmclient_prompts.py.
+  - repo: local
+    hooks:
+      - id: check-llmclient-prompts
+        name: check LLMClient system prompts name only their extensions' tools
+        language: python
+        additional_dependencies: [pyyaml==6.0.2]
+        entry: python .github/hooks/check_llmclient_prompts.py
+        files: ^llm-clients/.*\.ya?ml$

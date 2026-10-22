@@ -3,7 +3,7 @@
 Built-in Proxy manifests, which every platform applies for its admin, so that every account may use them. Each one
 names one of the platform's built-in Providers, and the Secret that holds its API key, which the platform creates
 from its environment, e.g. `openai` and `openai_api_key` from `OPENAI_API_KEY`. On a platform without a provider's
-API key, its Proxy fails to apply, and the platform reports it.
+API key, its Proxy isn't applied, and the platform reports it.
 
 Each one allows only its provider's inference endpoints, e.g. chat completions, embeddings and models, so that the
 platform's provider accounts' files, fine-tuning jobs, batches and settings can't be reached through it.

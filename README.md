@@ -70,8 +70,9 @@ When a Smarter platform is deployed, `manage.py initialize_platform` loads this 
 The platform's admin owns the resources, so every account on the platform may use them. Each new account also gets
 its own copy of the plugins and LLMClients. Applying is idempotent: a resource that already exists is updated, and an
 LLMClient that exists keeps its `deployed` value. An LLMClient that needs a Smarter Extension that isn't installed is
-skipped. A manifest that fails, e.g. a Proxy whose Provider has no API key on that platform, doesn't stop the
-others.
+skipped. So is a manifest that names a resource the platform doesn't have, e.g. an MCPClient whose access-token
+Secret its operator hasn't created: the platform warns, and applies it at a later initialization, once the Secret
+exists. Any other manifest that fails is reported, and doesn't stop the others.
 
 So a change that's merged into `main` reaches every Smarter platform the next time it's deployed or initialized.
 
