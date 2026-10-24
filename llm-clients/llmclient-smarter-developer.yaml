@@ -20,6 +20,7 @@ spec:
     prompt:
       allowedOrigins:
       - https://smarter.sh
+      - https://lawrencemcdaniel.com
       appAssistant: Sam
       appExamplePrompts:
       - How do I add a new SAM resource kind to Smarter?
