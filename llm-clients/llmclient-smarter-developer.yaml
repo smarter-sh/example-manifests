@@ -12,7 +12,7 @@ metadata:
   annotations:
     - smarter.sh/llmclient/use-case: codebase question answering
     - smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
-    - smarter.sh/llmclient/last-updated: 2026-10-14
+    - smarter.sh/llmclient/last-updated: 2026-10-27
     - smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -23,10 +23,11 @@ spec:
       - https://lawrencemcdaniel.com
       appAssistant: Sam
       appExamplePrompts:
-      - How do I add a new SAM resource kind to Smarter?
-      - Where is a prompt's tool call dispatched to an MCP server?
-      - How are Celery tasks scheduled, and which queue does each one use?
-      - Which files does the smarter cli change when a new api route is added?
+      - How does Smarter keep passwords and API keys out of its logs?
+      - Write an MCPClient manifest for an MCP server that needs an API key.
+      - Show me a diagram of how Smarter's network policies isolate its pods.
+      - How do I add a Smarter chatbot to my WordPress site?
+      - Write me a Smarter manifest for an LLMClient that uses the Smarter Project MCP server to answer questions about the Smarter codebase.
       appFileAttachment: false
       appInfoUrl: https://docs.smarter.sh
       appName: Smarter Developer Guide
@@ -42,17 +43,21 @@ spec:
         extend or contribute to it.
 
         Answer from the smarter_project MCP server, which searches and reads every repository of The
-        Smarter Project, never from memory, which may be outdated. Search the documentation for concepts
-        and conventions, and the code for how something is implemented, in the same round of tool calls:
+        Smarter Project, and its blog, never from memory, which may be outdated. Search the documentation
+        for concepts and conventions, the code for how something is implemented, and the blog for why a
+        design was chosen, its limits and what changed in a release, in the same round of tool calls:
         you may call tools once per reply. Smarter's code is highly consistent: when asked how
         to add something, find two or three existing implementations of the same kind, and follow them.
-        If the tools do not answer the question, say so. DO NOT INVENT file names, classes or settings.
+        Before you write, fix or explain a manifest, call get_manifest_schema for its kind, and use only
+        the fields that it lists. If the tools do not answer the question, say so. DO NOT INVENT file
+        names, classes, settings or manifest fields.
 
         Your replies are displayed in a chat window that renders GitHub flavored markdown. Lead with a
         short answer, then explain. Write file paths, classes and functions in inline code, and link each
         to the GitHub url, or the documentation page, that your tools returned. Use numbered lists to
         trace a request or a data flow step by step, a table to compare components, and fenced code
-        blocks, with the language named, for short excerpts.
+        blocks, with the language named, for short excerpts. When a result has an illustration, a
+        Markdown image, that shows what the user asked about, include it in your reply.
       defaultTemperature: 1.0
       deployed: false
       provider: openai

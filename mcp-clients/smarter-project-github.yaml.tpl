@@ -41,6 +41,7 @@ spec:
       - search_code
       - read_file
       - list_files
+      - get_manifest_schema
     includeInstructions: true
     timeout: 30
     cacheTtl: 3600
