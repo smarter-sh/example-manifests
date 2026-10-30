@@ -13,7 +13,7 @@ metadata:
     - search
     - web
   annotations:
-    - smarter.sh/mcpclient/documentation: https://docs.exa.ai/reference/exa-mcp
+    smarter.sh/mcpclient/documentation: https://docs.exa.ai/reference/exa-mcp
 spec:
   config:
     transport: http

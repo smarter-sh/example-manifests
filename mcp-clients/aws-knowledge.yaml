@@ -14,7 +14,7 @@ metadata:
     - aws
     - cloud
   annotations:
-    - smarter.sh/mcpclient/documentation: https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server
+    smarter.sh/mcpclient/documentation: https://awslabs.github.io/mcp/servers/aws-knowledge-mcp-server
 spec:
   config:
     transport: http

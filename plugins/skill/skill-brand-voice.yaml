@@ -13,7 +13,7 @@ metadata:
     - writing
     - brand
   annotations:
-    - smarter.sh/brand-voice/use-case: customer support
+    smarter.sh/brand-voice/use-case: customer support
 spec:
   selector:
     directive: always

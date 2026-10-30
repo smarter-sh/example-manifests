@@ -16,8 +16,8 @@ metadata:
     - openai
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://platform.openai.com/docs/api-reference
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://platform.openai.com/docs/api-reference
 spec:
   provider: openai
   apiKey: openai_api_key

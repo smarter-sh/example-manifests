@@ -16,7 +16,7 @@ metadata:
     - models
     - datasets
   annotations:
-    - smarter.sh/mcpclient/documentation: https://huggingface.co/settings/mcp
+    smarter.sh/mcpclient/documentation: https://huggingface.co/settings/mcp
 spec:
   config:
     transport: http

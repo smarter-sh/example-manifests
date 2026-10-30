@@ -15,7 +15,7 @@ metadata:
     - project-management
     - issues
   annotations:
-    - smarter.sh/mcpclient/documentation: https://linear.app/docs/mcp
+    smarter.sh/mcpclient/documentation: https://linear.app/docs/mcp
 spec:
   config:
     transport: http

@@ -12,8 +12,8 @@ metadata:
     - openai-compatible
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://docs.fireworks.ai/api-reference/introduction
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://docs.fireworks.ai/api-reference/introduction
 spec:
   provider: fireworks
   apiKey: fireworks_api_key

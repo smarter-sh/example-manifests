@@ -13,7 +13,7 @@ metadata:
     - documentation
     - cloudflare
   annotations:
-    - smarter.sh/mcpclient/documentation: https://github.com/cloudflare/mcp-server-cloudflare
+    smarter.sh/mcpclient/documentation: https://github.com/cloudflare/mcp-server-cloudflare
 spec:
   config:
     transport: http

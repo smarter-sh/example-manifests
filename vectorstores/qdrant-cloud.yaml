@@ -14,7 +14,7 @@ metadata:
     - qdrant
     - managed
   annotations:
-    - smarter.sh/vectorstore/builtin: "true"
+    smarter.sh/vectorstore/builtin: "true"
 spec:
   backend: qdrant
   hosting: managed

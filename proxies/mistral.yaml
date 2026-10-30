@@ -12,8 +12,8 @@ metadata:
     - mistral
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://docs.mistral.ai/api/
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://docs.mistral.ai/api/
 spec:
   provider: mistral
   apiKey: mistral_api_key

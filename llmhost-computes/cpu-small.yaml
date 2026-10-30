@@ -10,7 +10,7 @@ metadata:
   tags:
   - cpu
   annotations:
-  - smarter.sh/llmhostcompute/builtin: 'true'
+    smarter.sh/llmhostcompute/builtin: 'true'
 spec:
   node:
     instanceType: m7i.xlarge

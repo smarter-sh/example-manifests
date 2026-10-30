@@ -17,8 +17,8 @@ metadata:
   - chat
   - reasoning
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/openai/gpt-oss-20b
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/openai/gpt-oss-20b
 spec:
   model:
     source: huggingface

@@ -13,7 +13,7 @@ metadata:
     - proxy
     - monitoring
   annotations:
-    - smarter.sh/budget/purpose: spending alerts
+    smarter.sh/budget/purpose: spending alerts
 spec:
   config:
     unit: cost

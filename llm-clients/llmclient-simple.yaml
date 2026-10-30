@@ -7,8 +7,8 @@ metadata:
   tags:
     - simple-llmclient
   annotations:
-    - smarter.sh/tests/focus-level: low
-    - smarter.sh/tests/owner: Lawrence McDaniel
+    smarter.sh/tests/focus-level: low
+    smarter.sh/tests/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

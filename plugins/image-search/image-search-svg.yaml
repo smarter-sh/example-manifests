@@ -22,7 +22,7 @@ metadata:
     - svg
     - design
   annotations:
-    - smarter.sh/svg-image-search/use-case: web-design
+    smarter.sh/svg-image-search/use-case: web-design
 spec:
   selector:
     directive: search_terms

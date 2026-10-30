@@ -17,8 +17,8 @@ metadata:
   - vision
   - large
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/google/gemma-3-27b-it
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/google/gemma-3-27b-it
 spec:
   model:
     source: huggingface

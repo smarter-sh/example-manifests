@@ -13,7 +13,7 @@ metadata:
     - engineering
     - code-review
   annotations:
-    - smarter.sh/code-review/use-case: software engineering
+    smarter.sh/code-review/use-case: software engineering
 spec:
   selector:
     directive: search_terms

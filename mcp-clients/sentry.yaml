@@ -16,7 +16,7 @@ metadata:
     - errors
     - developer-tools
   annotations:
-    - smarter.sh/mcpclient/documentation: https://docs.sentry.io/product/sentry-mcp/
+    smarter.sh/mcpclient/documentation: https://docs.sentry.io/product/sentry-mcp/
 spec:
   config:
     transport: http

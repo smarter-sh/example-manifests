@@ -12,8 +12,8 @@ metadata:
     - cohere
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://docs.cohere.com/reference/about
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://docs.cohere.com/reference/about
 spec:
   provider: cohere
   apiKey: cohere_api_key

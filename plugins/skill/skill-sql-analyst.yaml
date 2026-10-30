@@ -13,7 +13,7 @@ metadata:
     - sql
     - analytics
   annotations:
-    - smarter.sh/sql-analyst/use-case: data analysis
+    smarter.sh/sql-analyst/use-case: data analysis
 spec:
   selector:
     directive: search_terms

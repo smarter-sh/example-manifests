@@ -22,7 +22,7 @@ metadata:
     - diagrams
     - technical
   annotations:
-    - smarter.sh/diagram-image-search/use-case: technical-documentation
+    smarter.sh/diagram-image-search/use-case: technical-documentation
 spec:
   selector:
     directive: search_terms

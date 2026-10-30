@@ -17,7 +17,7 @@ metadata:
     - websearch
     - summarization
   annotations:
-    - smarter.sh/url-reader/use-case: summarization
+    smarter.sh/url-reader/use-case: summarization
 spec:
   selector:
     directive: search_terms

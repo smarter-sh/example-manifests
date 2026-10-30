@@ -12,7 +12,7 @@ metadata:
   - gpu
   - h100
   annotations:
-  - smarter.sh/llmhostcompute/builtin: 'true'
+    smarter.sh/llmhostcompute/builtin: 'true'
 spec:
   node:
     instanceType: p5.48xlarge

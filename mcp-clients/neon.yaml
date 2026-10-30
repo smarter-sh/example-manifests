@@ -15,7 +15,7 @@ metadata:
     - postgres
     - developer-tools
   annotations:
-    - smarter.sh/mcpclient/documentation: https://neon.com/docs/ai/neon-mcp-server
+    smarter.sh/mcpclient/documentation: https://neon.com/docs/ai/neon-mcp-server
 spec:
   config:
     transport: http

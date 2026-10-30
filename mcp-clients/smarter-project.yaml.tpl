@@ -29,8 +29,8 @@ metadata:
     - github
     - code
   annotations:
-    - smarter.sh/mcpclient/documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
-    - smarter.sh/mcpclient/repository: https://github.com/smarter-sh
+    smarter.sh/mcpclient/documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
+    smarter.sh/mcpclient/repository: https://github.com/smarter-sh
 spec:
   config:
     transport: http

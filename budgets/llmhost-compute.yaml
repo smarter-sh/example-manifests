@@ -13,7 +13,7 @@ metadata:
     - llmhost
     - compute
   annotations:
-    - smarter.sh/budget/purpose: infrastructure budget
+    smarter.sh/budget/purpose: infrastructure budget
 spec:
   config:
     unit: cost

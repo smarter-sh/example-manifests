@@ -12,7 +12,7 @@ metadata:
     - example
     - account
   annotations:
-    - smarter.sh/budget/purpose: organizational monthly cost constraint
+    smarter.sh/budget/purpose: organizational monthly cost constraint
 spec:
   config:
     unit: cost

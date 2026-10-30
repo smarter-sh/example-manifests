@@ -12,7 +12,7 @@ metadata:
   - jailbreak
   - llm-judge
   annotations:
-  - smarter.sh/guardrail/builtin: 'true'
+    smarter.sh/guardrail/builtin: 'true'
 spec:
   config:
     isActive: true

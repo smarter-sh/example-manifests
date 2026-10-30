@@ -21,7 +21,7 @@ metadata:
     - imagesearch
     - kid-friendly
   annotations:
-    - smarter.sh/safe-image-search/use-case: education
+    smarter.sh/safe-image-search/use-case: education
 spec:
   selector:
     directive: search_terms

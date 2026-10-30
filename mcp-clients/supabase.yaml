@@ -16,7 +16,7 @@ metadata:
     - postgres
     - developer-tools
   annotations:
-    - smarter.sh/mcpclient/documentation: https://supabase.com/docs/guides/getting-started/mcp
+    smarter.sh/mcpclient/documentation: https://supabase.com/docs/guides/getting-started/mcp
 spec:
   config:
     transport: http

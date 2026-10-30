@@ -23,7 +23,7 @@ metadata:
     - imagesearch
     - photography
   annotations:
-    - smarter.sh/bw-image-search/use-case: photography
+    smarter.sh/bw-image-search/use-case: photography
 spec:
   selector:
     directive: search_terms

@@ -12,7 +12,7 @@ metadata:
     - throttle
     - user
   annotations:
-    - smarter.sh/budget/purpose: per-user throttle
+    smarter.sh/budget/purpose: per-user throttle
 spec:
   config:
     unit: tokens

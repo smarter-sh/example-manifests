@@ -8,8 +8,8 @@ metadata:
     - dates
     - capstone-project
   annotations:
-    - smarter.sh/tests/focus-level: high
-    - smarter.sh/tests/owner: Lawrence McDaniel
+    smarter.sh/tests/focus-level: high
+    smarter.sh/tests/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

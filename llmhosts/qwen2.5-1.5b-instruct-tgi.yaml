@@ -17,8 +17,8 @@ metadata:
   - chat
   - small
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
 spec:
   model:
     source: huggingface

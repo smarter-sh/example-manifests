@@ -13,7 +13,7 @@ metadata:
     - education
     - user
   annotations:
-    - smarter.sh/budget/purpose: per-user allowance
+    smarter.sh/budget/purpose: per-user allowance
 spec:
   config:
     unit: cost

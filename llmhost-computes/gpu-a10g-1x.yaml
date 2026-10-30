@@ -11,7 +11,7 @@ metadata:
   - gpu
   - a10g
   annotations:
-  - smarter.sh/llmhostcompute/builtin: 'true'
+    smarter.sh/llmhostcompute/builtin: 'true'
 spec:
   node:
     instanceType: g5.2xlarge

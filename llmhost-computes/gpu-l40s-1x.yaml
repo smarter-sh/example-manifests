@@ -11,7 +11,7 @@ metadata:
   - gpu
   - l40s
   annotations:
-  - smarter.sh/llmhostcompute/builtin: 'true'
+    smarter.sh/llmhostcompute/builtin: 'true'
 spec:
   node:
     instanceType: g6e.2xlarge

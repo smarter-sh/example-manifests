@@ -12,10 +12,10 @@ metadata:
     - azure
     - cloudflare
   annotations:
-    - smarter.sh/llmclient/use-case: developer documentation assistant
-    - smarter.sh/llmclient/showcases: MCPClient, WebsearchPlugin, SkillPlugin, ImageSearchPlugin, Guardrail
-    - smarter.sh/llmclient/last-updated: 2026-10-08
-    - smarter.sh/llmclient/owner: Lawrence McDaniel
+    smarter.sh/llmclient/use-case: developer documentation assistant
+    smarter.sh/llmclient/showcases: MCPClient, WebsearchPlugin, SkillPlugin, ImageSearchPlugin, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-10-08'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

@@ -18,8 +18,8 @@ metadata:
     - claude
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://docs.claude.com/en/api/messages
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://docs.claude.com/en/api/messages
 spec:
   provider: anthropic
   apiKey: anthropic_api_key

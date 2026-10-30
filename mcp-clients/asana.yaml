@@ -15,7 +15,7 @@ metadata:
     - project-management
     - tasks
   annotations:
-    - smarter.sh/mcpclient/documentation: https://developers.asana.com/docs/using-asanas-mcp-server
+    smarter.sh/mcpclient/documentation: https://developers.asana.com/docs/using-asanas-mcp-server
 spec:
   config:
     transport: sse

@@ -9,10 +9,10 @@ metadata:
     - code
     - programming
   annotations:
-    - smarter.sh/llmclient/use-case: programming assistance
-    - smarter.sh/llmclient/showcases: syntax highlighted code blocks, SkillPlugin, Guardrail
-    - smarter.sh/llmclient/last-updated: 2026-10-08
-    - smarter.sh/llmclient/owner: Lawrence McDaniel
+    smarter.sh/llmclient/use-case: programming assistance
+    smarter.sh/llmclient/showcases: syntax highlighted code blocks, SkillPlugin, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-10-08'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

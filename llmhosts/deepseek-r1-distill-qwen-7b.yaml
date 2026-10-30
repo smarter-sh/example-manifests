@@ -15,8 +15,8 @@ metadata:
   - chat
   - reasoning
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B
 spec:
   model:
     source: huggingface

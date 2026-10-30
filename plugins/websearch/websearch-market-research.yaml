@@ -20,7 +20,7 @@ metadata:
     - market-research
     - competitive-intelligence
   annotations:
-    - smarter.sh/market-research/use-case: competitive research
+    smarter.sh/market-research/use-case: competitive research
 spec:
   selector:
     directive: search_terms

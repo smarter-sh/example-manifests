@@ -16,7 +16,7 @@ metadata:
     - payments
     - finance
   annotations:
-    - smarter.sh/mcpclient/documentation: https://docs.stripe.com/mcp
+    smarter.sh/mcpclient/documentation: https://docs.stripe.com/mcp
 spec:
   config:
     transport: http

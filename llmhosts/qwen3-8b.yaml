@@ -17,8 +17,8 @@ metadata:
   - reasoning
   - tool-calling
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/Qwen/Qwen3-8B
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/Qwen/Qwen3-8B
 spec:
   model:
     source: huggingface

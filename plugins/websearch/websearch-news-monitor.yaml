@@ -20,7 +20,7 @@ metadata:
     - websearch
     - news
   annotations:
-    - smarter.sh/news-monitor/use-case: news monitoring
+    smarter.sh/news-monitor/use-case: news monitoring
 spec:
   selector:
     directive: search_terms

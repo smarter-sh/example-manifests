@@ -22,7 +22,7 @@ metadata:
     - python
     - django
   annotations:
-    - smarter.sh/python-docs-assistant/use-case: documentation
+    smarter.sh/python-docs-assistant/use-case: documentation
 spec:
   selector:
     directive: search_terms

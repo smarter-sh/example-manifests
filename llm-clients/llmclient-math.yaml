@@ -12,9 +12,9 @@ metadata:
     - mermaid
     - imagesearch
   annotations:
-    - smarter.sh/tests/focus-level: medium
-    - smarter.sh/tests/purpose: Showcase LaTeX math, Mermaid diagrams and the image search plugins in Smarter Chat.
-    - smarter.sh/tests/owner: Lawrence McDaniel
+    smarter.sh/tests/focus-level: medium
+    smarter.sh/tests/purpose: Showcase LaTeX math, Mermaid diagrams and the image search plugins in Smarter Chat.
+    smarter.sh/tests/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

@@ -29,9 +29,9 @@ metadata:
     - about
     - information
   annotations:
-    - smarter.sh/smarter-project-websearch/plugin-display-name: The Smarter Project Web Search
-    - smarter.sh/smarter-project-websearch/plugin-category: Information Plugins
-    - smarter.sh/smarter-project-websearch/plugin-purpose: |
+    smarter.sh/smarter-project-websearch/plugin-display-name: The Smarter Project Web Search
+    smarter.sh/smarter-project-websearch/plugin-category: Information Plugins
+    smarter.sh/smarter-project-websearch/plugin-purpose: |
         finds current information about The Smarter Project on the web, from reputable sources,
         to complement the documentation, which the smarter_project_github MCPClients read.
 spec:

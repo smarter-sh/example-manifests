@@ -12,8 +12,8 @@ metadata:
     - llama
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://llama.developer.meta.com/docs/api
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://llama.developer.meta.com/docs/api
 spec:
   provider: metaai
   apiKey: llama_api_key

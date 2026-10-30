@@ -13,7 +13,7 @@ metadata:
     - communications
     - anthropic
   annotations:
-    - smarter.sh/anthropic-internal-comms/source: https://github.com/anthropics/skills
+    smarter.sh/anthropic-internal-comms/source: https://github.com/anthropics/skills
 spec:
   selector:
     directive: search_terms

@@ -15,11 +15,11 @@ metadata:
     - custom-domain
     - builtin
   annotations:
-    - smarter.sh/custom-domain/purpose: example
-    - smarter.sh/custom-domain/builtin: "true"
-    - smarter.sh/custom-domain/installed-by: initialize_platform
-    - smarter.sh/custom-domain/expected-verification: Failed
-    - smarter.sh/custom-domain/documentation: https://docs.smarter.sh/smarter-resources/smarter-custom-domain.html
+    smarter.sh/custom-domain/purpose: example
+    smarter.sh/custom-domain/builtin: "true"
+    smarter.sh/custom-domain/installed-by: initialize_platform
+    smarter.sh/custom-domain/expected-verification: Failed
+    smarter.sh/custom-domain/documentation: https://docs.smarter.sh/smarter-resources/smarter-custom-domain.html
 spec:
   config:
     domainName: example.com

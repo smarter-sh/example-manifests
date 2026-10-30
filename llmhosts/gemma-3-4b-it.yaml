@@ -16,8 +16,8 @@ metadata:
   - chat
   - vision
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/google/gemma-3-4b-it
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/google/gemma-3-4b-it
 spec:
   model:
     source: huggingface

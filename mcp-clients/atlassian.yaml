@@ -16,7 +16,7 @@ metadata:
     - jira
     - confluence
   annotations:
-    - smarter.sh/mcpclient/documentation: https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/
+    smarter.sh/mcpclient/documentation: https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/
 spec:
   config:
     transport: http

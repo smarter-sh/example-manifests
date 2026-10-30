@@ -15,8 +15,8 @@ metadata:
   - chat
   - tool-calling
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3
 spec:
   model:
     source: huggingface

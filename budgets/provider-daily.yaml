@@ -11,7 +11,7 @@ metadata:
     - example
     - provider
   annotations:
-    - smarter.sh/budget/purpose: provider budget
+    smarter.sh/budget/purpose: provider budget
 spec:
   config:
     unit: cost

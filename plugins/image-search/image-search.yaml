@@ -30,7 +30,7 @@ metadata:
   tags:
     - imagesearch
   annotations:
-    - smarter.sh/image-search/use-case: general
+    smarter.sh/image-search/use-case: general
 spec:
   selector:
     directive: always

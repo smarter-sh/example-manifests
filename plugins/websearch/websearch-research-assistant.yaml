@@ -19,7 +19,7 @@ metadata:
     - websearch
     - research
   annotations:
-    - smarter.sh/research-assistant/use-case: research
+    smarter.sh/research-assistant/use-case: research
 spec:
   selector:
     directive: search_terms

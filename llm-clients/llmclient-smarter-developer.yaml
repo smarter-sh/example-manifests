@@ -10,10 +10,10 @@ metadata:
     - open-source
     - code
   annotations:
-    - smarter.sh/llmclient/use-case: codebase question answering
-    - smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
-    - smarter.sh/llmclient/last-updated: 2026-10-28
-    - smarter.sh/llmclient/owner: Lawrence McDaniel
+    smarter.sh/llmclient/use-case: codebase question answering
+    smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-10-28'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
   config:

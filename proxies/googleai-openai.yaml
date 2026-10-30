@@ -18,8 +18,8 @@ metadata:
     - openai-compatible
     - builtin
   annotations:
-    - smarter.sh/proxy/builtin: "true"
-    - smarter.sh/proxy/documentation: https://ai.google.dev/gemini-api/docs/openai
+    smarter.sh/proxy/builtin: "true"
+    smarter.sh/proxy/documentation: https://ai.google.dev/gemini-api/docs/openai
 spec:
   provider: googleai
   apiKey: gemini_api_key

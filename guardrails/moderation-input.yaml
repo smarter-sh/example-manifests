@@ -11,7 +11,7 @@ metadata:
   - moderation
   - trust-and-safety
   annotations:
-  - smarter.sh/guardrail/builtin: 'true'
+    smarter.sh/guardrail/builtin: 'true'
 spec:
   config:
     isActive: true

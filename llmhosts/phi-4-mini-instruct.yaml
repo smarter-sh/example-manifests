@@ -15,8 +15,8 @@ metadata:
   - chat
   - small
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/microsoft/Phi-4-mini-instruct
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/microsoft/Phi-4-mini-instruct
 spec:
   model:
     source: huggingface

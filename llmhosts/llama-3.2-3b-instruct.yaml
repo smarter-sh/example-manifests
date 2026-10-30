@@ -16,8 +16,8 @@ metadata:
   - chat
   - small
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
 spec:
   model:
     source: huggingface

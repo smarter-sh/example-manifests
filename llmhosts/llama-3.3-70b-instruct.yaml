@@ -18,8 +18,8 @@ metadata:
   - large
   - tool-calling
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct
 spec:
   model:
     source: huggingface

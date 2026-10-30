@@ -12,7 +12,7 @@ metadata:
     - productivity
     - meetings
   annotations:
-    - smarter.sh/meeting-notes/use-case: productivity
+    smarter.sh/meeting-notes/use-case: productivity
 spec:
   selector:
     directive: search_terms

@@ -14,8 +14,8 @@ metadata:
   - gpu
   - reasoning
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://ollama.com/library/deepseek-r1
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://ollama.com/library/deepseek-r1
 spec:
   model:
     source: ollama

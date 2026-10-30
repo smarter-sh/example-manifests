@@ -16,7 +16,7 @@ metadata:
     - libraries
     - code
   annotations:
-    - smarter.sh/mcpclient/documentation: https://github.com/upstash/context7
+    smarter.sh/mcpclient/documentation: https://github.com/upstash/context7
 spec:
   config:
     transport: http

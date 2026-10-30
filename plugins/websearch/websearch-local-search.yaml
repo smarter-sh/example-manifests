@@ -19,7 +19,7 @@ metadata:
     - localization
     - french
   annotations:
-    - smarter.sh/local-search-fr/use-case: localized search
+    smarter.sh/local-search-fr/use-case: localized search
 spec:
   selector:
     directive: always

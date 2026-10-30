@@ -14,7 +14,7 @@ metadata:
     - pinecone
     - managed
   annotations:
-    - smarter.sh/vectorstore/builtin: "true"
+    smarter.sh/vectorstore/builtin: "true"
 spec:
   backend: pinecone
   hosting: managed

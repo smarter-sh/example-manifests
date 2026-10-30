@@ -14,7 +14,7 @@ metadata:
     - github
     - code
   annotations:
-    - smarter.sh/mcpclient/documentation: https://gitmcp.io
+    smarter.sh/mcpclient/documentation: https://gitmcp.io
 spec:
   config:
     transport: http

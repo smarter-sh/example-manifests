@@ -14,7 +14,7 @@ metadata:
     - github
     - code
   annotations:
-    - smarter.sh/mcpclient/documentation: https://docs.devin.ai/work-with-devin/deepwiki-mcp
+    smarter.sh/mcpclient/documentation: https://docs.devin.ai/work-with-devin/deepwiki-mcp
 spec:
   config:
     transport: http

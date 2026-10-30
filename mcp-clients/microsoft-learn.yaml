@@ -14,7 +14,7 @@ metadata:
     - microsoft
     - azure
   annotations:
-    - smarter.sh/mcpclient/documentation: https://learn.microsoft.com/en-us/training/support/mcp
+    smarter.sh/mcpclient/documentation: https://learn.microsoft.com/en-us/training/support/mcp
 spec:
   config:
     transport: http

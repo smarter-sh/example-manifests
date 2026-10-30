@@ -15,7 +15,7 @@ metadata:
     - productivity
     - knowledge-base
   annotations:
-    - smarter.sh/mcpclient/documentation: https://developers.notion.com/docs/mcp
+    smarter.sh/mcpclient/documentation: https://developers.notion.com/docs/mcp
 spec:
   config:
     transport: http

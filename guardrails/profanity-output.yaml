@@ -11,7 +11,7 @@ metadata:
   - profanity
   - brand-safety
   annotations:
-  - smarter.sh/guardrail/builtin: 'true'
+    smarter.sh/guardrail/builtin: 'true'
 spec:
   config:
     isActive: true

@@ -15,8 +15,8 @@ metadata:
   - cpu
   - chat
   annotations:
-  - smarter.sh/llmhost/builtin: 'true'
-  - smarter.sh/llmhost/model-card: https://ollama.com/library/llama3.2
+    smarter.sh/llmhost/builtin: 'true'
+    smarter.sh/llmhost/model-card: https://ollama.com/library/llama3.2
 spec:
   model:
     source: ollama
