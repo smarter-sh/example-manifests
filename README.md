@@ -3,6 +3,7 @@
 [![Checks](https://github.com/smarter-sh/example-manifests/actions/workflows/checks.yml/badge.svg?branch=main)](https://github.com/smarter-sh/example-manifests/actions/workflows/checks.yml)
 [![Docs](https://img.shields.io/badge/Read%20the%20Docs-smarter.sh-blue?logo=readthedocs)](https://docs.smarter.sh/en/latest/smarter-framework/smarter-manifests.html)
 [![Website](https://img.shields.io/badge/official%20web%20site-smarter.sh-blue?logo=google-chrome)](https://smarter.sh)
+[![Slack](https://img.shields.io/badge/Slack-The%20Smarter%20Project-4A154B?logo=slack&logoColor=white)](https://join.slack.com/t/thesmarterproject/shared_invite/zt-4f0t6v46q-e2c5Of4hS4fBr_XwfQARCw)
 
 **The shared, community-supported collection of example [Smarter](https://smarter.sh) manifests: LLMClients,
 plugins, MCPClients, Guardrails, Proxies, LLMHosts, Vectorstores, Budgets and more, ready to apply, read and copy.**
