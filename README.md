@@ -27,27 +27,29 @@ Smarter platform gets it at its next deployment.
 
 ## What's in this repository
 
-One folder per kind. Each folder has a short README about its examples.
+The manifests are in [`smarter/`](smarter/), one folder per kind. Each folder has a short README about its examples.
 
-| Folder                                           | Kind                | What's in it                                                                                       | Files |
-| ------------------------------------------------ | ------------------- | -------------------------------------------------------------------------------------------------- | ----: |
-| [`budgets/`](budgets/)                           | `Budget`            | Spending limits on accounts, Providers, Proxies, compute and users. Detached: they enforce nothing |     6 |
-| [`custom-domains/`](custom-domains/)             | `CustomDomain`      | `example.com`, whose verification is expected to fail                                              |     1 |
-| [`guardrails/`](guardrails/)                     | `Guardrail`         | Moderation, prompt injection, personal data and secrets, profanity, off-topic, and more            |    18 |
-| [`llm-clients/`](llm-clients/)                   | `LLMClient`         | Chat assistants, from a minimal one to agents that combine plugins, MCPClients and Guardrails      |    20 |
-| [`llmhost-computes/`](llmhost-computes/)         | `LLMHostCompute`    | The kinds of node that self-hosted models run on, from a small CPU node to eight H100s             |     7 |
-| [`llmhosts/`](llmhosts/)                         | `LLMHost`           | Self-hosted open-weight models, on every inference engine that Smarter supports                    |    24 |
-| [`mcp-clients/`](mcp-clients/)                   | `MCPClient`         | Popular remote MCP servers, and the Smarter Project's own (templates)                              |    28 |
-| [`plugins/static/`](plugins/static/)             | `Plugin`            | Plugins that answer from data in the manifest                                                      |     2 |
-| [`plugins/skill/`](plugins/skill/)               | `SkillPlugin`       | Skills: code review, meeting notes, SQL analysis, PDF files, and more                              |     7 |
-| [`plugins/websearch/`](plugins/websearch/)       | `WebsearchPlugin`   | Web search and web page reading                                                                    |     7 |
-| [`plugins/image-search/`](plugins/image-search/) | `ImageSearchPlugin` | Image search: photographs, diagrams, SVGs, and kid-friendly images                                 |     5 |
-| [`proxies/`](proxies/)                           | `Proxy`             | Pass-through access to the inference endpoints of nine LLM providers                               |     9 |
-| [`vectorstores/`](vectorstores/)                 | `Vectorstore`       | Vector databases on Pinecone, Qdrant Cloud, and self-hosted Qdrant                                 |     4 |
-| [`scripts/`](scripts/)                           | none                | Not manifests: the scripts that Smarter may run when it loads this repository. None yet            |     - |
+| Folder                                                           | Kind                | What's in it                                                                                       | Files |
+| ---------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------- | ----: |
+| [`smarter/budgets/`](smarter/budgets/)                           | `Budget`            | Spending limits on accounts, Providers, Proxies, compute and users. Detached: they enforce nothing |     6 |
+| [`smarter/custom-domains/`](smarter/custom-domains/)             | `CustomDomain`      | `example.com`, whose verification is expected to fail                                              |     1 |
+| [`smarter/guardrails/`](smarter/guardrails/)                     | `Guardrail`         | Moderation, prompt injection, personal data and secrets, profanity, off-topic, and more            |    18 |
+| [`smarter/llm-clients/`](smarter/llm-clients/)                   | `LLMClient`         | Chat assistants, from a minimal one to agents that combine plugins, MCPClients and Guardrails      |    20 |
+| [`smarter/llmhost-computes/`](smarter/llmhost-computes/)         | `LLMHostCompute`    | The kinds of node that self-hosted models run on, from a small CPU node to eight H100s             |     7 |
+| [`smarter/llmhosts/`](smarter/llmhosts/)                         | `LLMHost`           | Self-hosted open-weight models, on every inference engine that Smarter supports                    |    24 |
+| [`smarter/mcp-clients/`](smarter/mcp-clients/)                   | `MCPClient`         | Popular remote MCP servers, and the Smarter Project's own (templates)                              |    28 |
+| [`smarter/plugins/static/`](smarter/plugins/static/)             | `Plugin`            | Plugins that answer from data in the manifest                                                      |     2 |
+| [`smarter/plugins/skill/`](smarter/plugins/skill/)               | `SkillPlugin`       | Skills: code review, meeting notes, SQL analysis, PDF files, and more                              |     7 |
+| [`smarter/plugins/websearch/`](smarter/plugins/websearch/)       | `WebsearchPlugin`   | Web search and web page reading                                                                    |     7 |
+| [`smarter/plugins/image-search/`](smarter/plugins/image-search/) | `ImageSearchPlugin` | Image search: photographs, diagrams, SVGs, and kid-friendly images                                 |     5 |
+| [`smarter/proxies/`](smarter/proxies/)                           | `Proxy`             | Pass-through access to the inference endpoints of nine LLM providers                               |     9 |
+| [`smarter/vectorstores/`](smarter/vectorstores/)                 | `Vectorstore`       | Vector databases on Pinecone, Qdrant Cloud, and self-hosted Qdrant                                 |     4 |
+| [`scripts/`](scripts/)                                           | none                | Not manifests: the scripts that Smarter may run when it loads this repository. None yet            |     - |
 
 And the files that keep the repository tidy: the [`Makefile`](Makefile) (`make init`, `make check`), the automated
 checks in [`.pre-commit-config.yaml`](.pre-commit-config.yaml), and GitHub's settings in [`.github/`](.github/).
+If you work with an AI coding agent such as Claude Code, [`CLAUDE.md`](CLAUDE.md) and the
+[Agent Skills in `skills/`](skills/) tell it how this repository works.
 
 ---
 
@@ -83,7 +85,7 @@ So a change that's merged into `main` reaches every Smarter platform the next ti
 
 Every manifest here works on its own platform, too:
 
-- **With the [Smarter CLI](https://github.com/smarter-sh/smarter-cli)**: `smarter apply -f llm-clients/llmclient-example.yaml`.
+- **With the [Smarter CLI](https://github.com/smarter-sh/smarter-cli)**: `smarter apply -f smarter/llm-clients/llmclient-example.yaml`.
   Rename the resource first if one by that name exists.
 - **In the web console**: open **Apply Manifest**, under **Workbench** in the sidebar, and drop the file on the
   **Drop Zone**.
@@ -98,7 +100,7 @@ names it.
 
 ## Templates
 
-A `*.yaml.tpl` file is a manifest template, e.g. [`mcp-clients/smarter-project.yaml.tpl`](mcp-clients/smarter-project.yaml.tpl).
+A `*.yaml.tpl` file is a manifest template, e.g. [`smarter/mcp-clients/smarter-project.yaml.tpl`](smarter/mcp-clients/smarter-project.yaml.tpl).
 It's a Python [`string.Template`](https://docs.python.org/3/library/string.html#template-strings), whose
 placeholders are filled in with the values of the platform that applies it:
 

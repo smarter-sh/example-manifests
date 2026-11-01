@@ -60,44 +60,44 @@ repos:
     hooks:
       - id: check-jsonschema
         name: validate Budget manifests
-        files: ^budgets/.*\.ya?ml$
+        files: ^smarter/budgets/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Budget.schema.json
       - id: check-jsonschema
         name: validate CustomDomain manifests
-        files: ^custom-domains/.*\.ya?ml$
+        files: ^smarter/custom-domains/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/CustomDomain.schema.json
       - id: check-jsonschema
         name: validate Guardrail manifests
-        files: ^guardrails/.*\.ya?ml$
+        files: ^smarter/guardrails/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Guardrail.schema.json
       - id: check-jsonschema
         name: validate LLMClient manifests
-        files: ^llm-clients/.*\.ya?ml$
+        files: ^smarter/llm-clients/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMClient.schema.json
       - id: check-jsonschema
         name: validate LLMHostCompute manifests
-        files: ^llmhost-computes/.*\.ya?ml$
+        files: ^smarter/llmhost-computes/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMHostCompute.schema.json
       - id: check-jsonschema
         name: validate LLMHost manifests
-        files: ^llmhosts/.*\.ya?ml$
+        files: ^smarter/llmhosts/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/LLMHost.schema.json
       - id: check-jsonschema
         name: validate MCPClient manifests
         types_or: [file]
-        files: ^mcp-clients/.*\.ya?ml(\.tpl)?$
+        files: ^smarter/mcp-clients/.*\.ya?ml(\.tpl)?$
         args:
           - --default-filetype
           - yaml
@@ -105,37 +105,37 @@ repos:
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/MCPClient.schema.json
       - id: check-jsonschema
         name: validate Plugin manifests
-        files: ^plugins/static/.*\.ya?ml$
+        files: ^smarter/plugins/static/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Plugin.schema.json
       - id: check-jsonschema
         name: validate SkillPlugin manifests
-        files: ^plugins/skill/.*\.ya?ml$
+        files: ^smarter/plugins/skill/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/SkillPlugin.schema.json
       - id: check-jsonschema
         name: validate WebsearchPlugin manifests
-        files: ^plugins/websearch/.*\.ya?ml$
+        files: ^smarter/plugins/websearch/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/WebsearchPlugin.schema.json
       - id: check-jsonschema
         name: validate ImageSearchPlugin manifests
-        files: ^plugins/image-search/.*\.ya?ml$
+        files: ^smarter/plugins/image-search/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/ImageSearchPlugin.schema.json
       - id: check-jsonschema
         name: validate Proxy manifests
-        files: ^proxies/.*\.ya?ml$
+        files: ^smarter/proxies/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Proxy.schema.json
       - id: check-jsonschema
         name: validate Vectorstore manifests
-        files: ^vectorstores/.*\.ya?ml$
+        files: ^smarter/vectorstores/.*\.ya?ml$
         args:
           - --schemafile
           - https://raw.githubusercontent.com/smarter-sh/smarter/main/smarter/smarter/apps/api/v1/contract/sam/Vectorstore.schema.json
@@ -149,4 +149,4 @@ repos:
         language: python
         additional_dependencies: [pyyaml==6.0.2]
         entry: python .github/hooks/check_llmclient_prompts.py
-        files: ^llm-clients/.*\.ya?ml$
+        files: ^smarter/llm-clients/.*\.ya?ml$

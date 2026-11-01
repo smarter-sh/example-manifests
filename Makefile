@@ -12,7 +12,8 @@ help:
 
 init:
 	@command -v $(PYTHON) >/dev/null 2>&1 || { echo "make init needs Python 3: install it, or run make init PYTHON=/path/to/python3"; exit 1; }
-	$(PYTHON) -m venv $(VENV)
+	@# --clear: start from an empty venv, which also repairs one whose Python was moved or upgraded.
+	$(PYTHON) -m venv --clear $(VENV)
 	$(VENV)/bin/pip install --quiet --upgrade pip
 	$(VENV)/bin/pip install --quiet -r requirements.txt
 	$(VENV)/bin/pre-commit install
