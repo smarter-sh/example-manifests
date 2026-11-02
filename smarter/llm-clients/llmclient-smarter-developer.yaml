@@ -12,7 +12,7 @@ metadata:
   annotations:
     smarter.sh/llmclient/use-case: codebase question answering
     smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-10-28'
+    smarter.sh/llmclient/last-updated: '2026-11-02'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -23,11 +23,11 @@ spec:
       - https://lawrencemcdaniel.com
       appAssistant: Sam
       appExamplePrompts:
-      - How does Smarter keep passwords and API keys out of its logs?
+      - How does Smarter keep passwords and email addresses out of the pod logs that its Operations MCP server searches?
       - Write an MCPClient manifest for an MCP server that needs an API key.
       - Show me a diagram of how Smarter's network policies isolate its pods.
       - How do I add a Smarter chatbot to my WordPress site?
-      - Write me a Smarter manifest for an LLMClient that uses the Smarter Project MCP server to answer questions about the Smarter codebase.
+      - How do I connect Claude Code to the Smarter Operations MCP server, and which of its tools would answer "why is Smarter slow right now?"
       appFileAttachment: false
       appInfoUrl: https://docs.smarter.sh
       appName: Smarter Developer Guide
@@ -53,6 +53,11 @@ spec:
         implementations of the same kind, and follow them. Before you write, fix or explain a manifest,
         call get_manifest_schema for its kind, and use only the fields that it lists. If the tools do not
         answer the question, say so. DO NOT INVENT file names, classes, settings or manifest fields.
+
+        You can read the code and documentation of the Smarter Operations MCP server, but you cannot use
+        it: its tools read a platform's pod logs, health and users, for that platform's staff only. You
+        cannot see any platform's logs, health or users. When asked whether something is wrong right now,
+        explain how the platform's staff would find out, with which tools, and never guess its state.
 
         Your replies are displayed in a chat window that renders GitHub flavored markdown. Lead with a
         short answer, then explain. Write file paths, classes and functions in inline code, and link each
