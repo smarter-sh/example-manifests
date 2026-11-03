@@ -34,7 +34,7 @@ The manifests are in [`smarter/`](smarter/), one folder per kind. Each folder ha
 | [`smarter/budgets/`](smarter/budgets/)                           | `Budget`            | Spending limits on accounts, Providers, Proxies, compute and users. Detached: they enforce nothing |     6 |
 | [`smarter/custom-domains/`](smarter/custom-domains/)             | `CustomDomain`      | `example.com`, whose verification is expected to fail                                              |     1 |
 | [`smarter/guardrails/`](smarter/guardrails/)                     | `Guardrail`         | Moderation, prompt injection, personal data and secrets, profanity, off-topic, and more            |    18 |
-| [`smarter/llm-clients/`](smarter/llm-clients/)                   | `LLMClient`         | Chat assistants, from a minimal one to agents that combine plugins, MCPClients and Guardrails      |    21 |
+| [`smarter/llm-clients/`](smarter/llm-clients/)                   | `LLMClient`         | Chat assistants, from a minimal one to agents that combine plugins, MCPClients and Guardrails      |    23 |
 | [`smarter/llmhost-computes/`](smarter/llmhost-computes/)         | `LLMHostCompute`    | The kinds of node that self-hosted models run on, from a small CPU node to eight H100s             |     7 |
 | [`smarter/llmhosts/`](smarter/llmhosts/)                         | `LLMHost`           | Self-hosted open-weight models, on every inference engine that Smarter supports                    |    24 |
 | [`smarter/mcp-clients/`](smarter/mcp-clients/)                   | `MCPClient`         | Popular remote MCP servers, and the platform's own MCPServer (templates)                          |    28 |

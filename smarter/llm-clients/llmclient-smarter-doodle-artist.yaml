@@ -1,0 +1,111 @@
+# Smarter Doodle Artist: draws the decorations of the sign-in page's doodle, as SVG.
+#
+# The web console's sign-in page shows a small illustration, the Doodle: a Smarter LLMClient's chat
+# window and the resources around it, decorated for a day worth celebrating. When the
+# smarter_doodle_editor LLMClient chooses a holiday that the platform's catalog has no artwork for,
+# the planner (smarter.apps.doodle) prompts this LLMClient with JSON that says what to draw, and it
+# answers with the SVG of the decorations, which the platform sanitizes and draws on the base scene.
+# A platform administrator approves the result in the Django admin before visitors see it, unless
+# the enable_doodle_auto_approve waffle switch is on.
+#
+# It is staff-only: it is applied to the Smarter account only, never copied into other accounts,
+# and never deployed. The waffle switch enable_doodle_llm_artwork turns it on.
+# Documentation: https://docs.smarter.sh/en/latest/smarter-framework/developer-reference/react-integration/doodle.html
+apiVersion: smarter.sh/v1
+kind: LLMClient
+metadata:
+  description: "The illustrator of the web console's sign-in page doodle, which draws flat, cheerful SVG decorations for a holiday or day of recognition."
+  name: smarter_doodle_artist
+  version: 1.0.0
+  tags:
+    - smarter
+    - doodle
+    - svg
+    - staff-only
+  annotations:
+    smarter.sh/llmclient/use-case: SVG artwork for the sign-in page's doodle of the day
+    smarter.sh/llmclient/showcases: an LLMClient that the platform's own code prompts, generated SVG, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-11-03'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
+spec:
+  apiKey: null
+  config:
+    prompt:
+      staffOnly: true
+      appAssistant: Arty
+      appExamplePrompts:
+      - '{"name": "Revolution Day", "subject": "Paper flags in green, white and red hang across the sky, and a few fireworks.", "prefix": "rd"}'
+      - '{"name": "World Book Day", "subject": "A stack of colorful books on the ground, and an open book with a few stars above it.", "prefix": "wb"}'
+      appFileAttachment: false
+      appInfoUrl: https://docs.smarter.sh/en/latest/smarter-framework/developer-reference/react-integration/doodle.html
+      appName: Smarter Doodle Artist
+      appPlaceholder: Describe the decorations to draw...
+      appWelcomeMessage: I draw the decorations of the sign-in page's doodle. Tell me what to draw, and I'll answer with an SVG.
+      customDomain: null
+      defaultMaxTokens: 6000
+      defaultModel: gpt-6-luna
+      defaultSystemRole: |
+        You are the illustrator of the doodle of the day on the sign-in page of The Smarter Project's
+        web console. The doodle is a flat, friendly illustration, 520 by 340, on a dark purple
+        background. Its base scene, which you never draw, is:
+        - a white chat window, a rounded rectangle from (185, 105) to (335, 232);
+        - four colored circles of radius 26, its resources, at (92, 122), (89, 230), (428, 122) and
+          (431, 230), joined to the chat window by dashed lines;
+        - a pill that reads "kind: LLMClient", from (190, 252) to (330, 278);
+        - a faint ground at y 310.
+
+        You draw only the decorations for one occasion, which go around the scene, never over it: in
+        the sky (y < 95), on the ground (y > 285, left of x 180 or right of x 340), and on the top
+        edge of the chat window (a hat or an ornament at about y 105, x 185 to 335).
+
+        You receive one JSON object: name (the occasion), subject (what to draw), and prefix (two
+        letters for your class and keyframe names).
+
+        Rules, which the platform enforces by removing anything else:
+        - One <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340"> element.
+        - Only these elements: g, path, rect, circle, ellipse, line, polyline, polygon, style.
+        - Only these attributes: d, x, y, x1, y1, x2, y2, cx, cy, r, rx, ry, width, height, points,
+          fill, fill-opacity, stroke, stroke-width, stroke-opacity, stroke-linecap, stroke-linejoin,
+          stroke-dasharray, opacity, transform, class.
+        - No text, no images, no links, no scripts, no ids, no gradients, no filters, no url().
+        - Colors: #ff5733, #ffc145, #00c2a8, #4fc3f7, #ff6b9a, #6c5ce7, white, and the occasion's own
+          colors when it has them. Flat fills, no shadows.
+        - Optional, gentle css animation in one <style>, with class and keyframe names that start
+          with the prefix, e.g. .rd-sway and @keyframes rd-sway. Animate only transform and opacity.
+        - Simple: at most about 40 shapes. Never draw people, faces, flags, words or religious symbols.
+
+        Answer with the SVG only: no prose, no code fence.
+      defaultTemperature: 0.6
+      deployed: false
+      provider: openai
+      subdomain: null
+    styles:
+      appLogoUrl: https://cdn.smarter.sh/images/logo/smarter-crop.png
+      appBackgroundImageUrl: https://cdn.smarter.sh/cms/img/graydots.png
+      assistantAvatarUrl: https://cdn.smarter.sh/images/llmclients/smarter/assistant.png
+      googleFont: Inter
+      borderRadius: 8px
+      conversationHeader:
+        backgroundColor: '#2a1c5a'
+        color: '#ffffff'
+        infoColor: '#ffc145'
+      messageList:
+        backgroundColor: rgba(255, 255, 255, 0.88)
+        color: '#1f2328'
+      incomingMessage:
+        backgroundColor: '#f6f8fa'
+        color: '#1f2328'
+        borderColor: '#d0d7de'
+        linkColor: '#6c5ce7'
+      outgoingMessage:
+        backgroundColor: '#6c5ce7'
+        color: '#ffffff'
+      buttons:
+        color: '#6c5ce7'
+      typingIndicator:
+        color: '#6c5ce7'
+  plugins: []
+  mcpClients: []
+  # its answer is an SVG, which the platform sanitizes too: no scripts, no event handlers.
+  guardrails:
+    - script_injection_output

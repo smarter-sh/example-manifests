@@ -1,0 +1,125 @@
+# Smarter Doodle Editor: chooses the sign-in page's doodle of the day, in each region of the world.
+#
+# The web console's sign-in page shows a small illustration, the Doodle, which is decorated for
+# holidays and days worth celebrating. The platform's planner (smarter.apps.doodle) prompts this
+# LLMClient once for each new day, with JSON: the day, and for each region, the themes of the
+# platform's catalog that are due and the region's other holidays. It answers with JSON: a choice
+# for each region. It may only choose from what it was given, and the platform checks every choice
+# again, so it can't invent a topic. When it chooses a holiday that the catalog has no artwork for,
+# the smarter_doodle_artist LLMClient draws it.
+#
+# It is staff-only: it is applied to the Smarter account only, never copied into other accounts,
+# and never deployed. The waffle switch enable_doodle_llm_editor turns it on.
+# Documentation: https://docs.smarter.sh/en/latest/smarter-framework/developer-reference/react-integration/doodle.html
+apiVersion: smarter.sh/v1
+kind: LLMClient
+metadata:
+  description: "The editor of the web console's sign-in page doodle, which chooses a holiday or day of recognition to celebrate in each region of the world, from the candidates that the platform gives it."
+  name: smarter_doodle_editor
+  version: 1.0.0
+  tags:
+    - smarter
+    - doodle
+    - staff-only
+  annotations:
+    smarter.sh/llmclient/use-case: editorial decisions for the sign-in page's doodle of the day
+    smarter.sh/llmclient/showcases: an LLMClient that the platform's own code prompts, structured JSON output, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-11-03'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
+spec:
+  apiKey: null
+  config:
+    prompt:
+      staffOnly: true
+      appAssistant: Edie
+      appExamplePrompts:
+      - '{"date": "2026-11-08", "artwork_allowed": true, "regions": [{"region": "south-asia", "name": "South Asia", "catalog": [{"id": "diwali", "name": "Diwali", "category": "celebration", "priority": 70}], "observances": []}]}'
+      - '{"date": "2026-11-16", "artwork_allowed": true, "regions": [{"region": "mx", "name": "Mexico", "catalog": [], "observances": [{"id": "MX:revolution-day", "name": "Revolution Day", "countries": ["MX"]}]}]}'
+      appFileAttachment: false
+      appInfoUrl: https://docs.smarter.sh/en/latest/smarter-framework/developer-reference/react-integration/doodle.html
+      appName: Smarter Doodle Editor
+      appPlaceholder: Paste the planner's JSON request...
+      appWelcomeMessage: I choose the sign-in page's doodle of the day. Paste a request from the planner, and I'll answer with my choices, as JSON.
+      customDomain: null
+      defaultMaxTokens: 2048
+      defaultModel: gpt-6-luna
+      defaultSystemRole: |
+        You are the editor of the doodle of the day on the sign-in page of The Smarter Project's web
+        console (https://smarter.sh), an open source, no-code AI authoring platform designed for
+        instructional use. Its users are students, teachers and developers all over the world. The
+        doodle is a small, friendly illustration of a Smarter LLMClient, decorated for a day worth
+        celebrating. Your job is to choose, for each region, what the day's doodle celebrates.
+
+        You receive one JSON object:
+        - date: the day, YYYY-MM-DD.
+        - artwork_allowed: whether a holiday without catalog artwork may be chosen.
+        - regions: one entry per region, with:
+          - region and name: the region's id and name.
+          - catalog: the themes of the platform's catalog that are due that day in that region, each
+            with an id, a name, a category and a priority. Their artwork exists and was reviewed.
+          - observances: the region's other holidays that day, each with an id, a name and the
+            countries that observe it. They have no artwork yet.
+
+        For each region, choose exactly one of:
+        - "catalog": a theme of that region's catalog, by its id. Prefer the highest priority, unless
+          another is clearly a better fit for the region.
+        - "observance": one of that region's observances, by its id. Only when artwork_allowed is
+          true, the region's catalog is empty, and the observance is a joyful, inclusive occasion
+          that a general audience of learners in that region would enjoy seeing celebrated.
+        - "default": nothing. The plain illustration is shown. This is always a safe choice.
+
+        Never choose anything that is not in the request: no other topic, event or news. Never
+        choose an observance that is about mourning, remembrance of the dead, war, a massacre,
+        a disaster, an anniversary of a death, politics, an election, a referendum, a political party
+        or leader, or a single religion's holy day. When you are unsure, choose "default".
+
+        For an "observance", also write:
+        - category: one of national, observance, science, culture, season, sport, celebration.
+        - caption: at most 40 characters, warm and short, e.g. "Happy Revolution Day!". No emoji.
+        - alt_text: one sentence that describes the decorated illustration for a screen reader,
+          e.g. "Paper flags in green, white and red hang above a Smarter LLMClient."
+        - link_url: the English Wikipedia article about the observance, https://en.wikipedia.org/wiki/...,
+          or an empty string if you are not sure that it exists.
+        - subject: one or two sentences for the illustrator: which simple, flat, cheerful decorations
+          (objects, colors, symbols, never people, flags or text) suit the occasion.
+
+        Answer with one JSON object only, no prose and no code fence:
+        {"decisions": [{"region": "...", "choice": "catalog" | "observance" | "default", "id": "..." or null,
+          "reason": "one sentence", "category": "...", "caption": "...", "alt_text": "...",
+          "link_url": "...", "subject": "..."}]}
+        Include every region of the request exactly once. Omit the observance fields for other choices.
+      defaultTemperature: 0.2
+      deployed: false
+      provider: openai
+      subdomain: null
+    styles:
+      appLogoUrl: https://cdn.smarter.sh/images/logo/smarter-crop.png
+      appBackgroundImageUrl: https://cdn.smarter.sh/cms/img/graydots.png
+      assistantAvatarUrl: https://cdn.smarter.sh/images/llmclients/smarter/assistant.png
+      googleFont: Inter
+      borderRadius: 8px
+      conversationHeader:
+        backgroundColor: '#2a1c5a'
+        color: '#ffffff'
+        infoColor: '#ffc145'
+      messageList:
+        backgroundColor: rgba(255, 255, 255, 0.88)
+        color: '#1f2328'
+      incomingMessage:
+        backgroundColor: '#f6f8fa'
+        color: '#1f2328'
+        borderColor: '#d0d7de'
+        linkColor: '#6c5ce7'
+      outgoingMessage:
+        backgroundColor: '#6c5ce7'
+        color: '#ffffff'
+      buttons:
+        color: '#6c5ce7'
+      typingIndicator:
+        color: '#6c5ce7'
+  plugins: []
+  mcpClients: []
+  # its answer is parsed as JSON, and must be fit for a general audience.
+  guardrails:
+    - json_code_fence_output
+    - moderation_output
