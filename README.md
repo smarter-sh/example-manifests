@@ -37,7 +37,7 @@ The manifests are in [`smarter/`](smarter/), one folder per kind. Each folder ha
 | [`smarter/llm-clients/`](smarter/llm-clients/)                   | `LLMClient`         | Chat assistants, from a minimal one to agents that combine plugins, MCPClients and Guardrails      |    21 |
 | [`smarter/llmhost-computes/`](smarter/llmhost-computes/)         | `LLMHostCompute`    | The kinds of node that self-hosted models run on, from a small CPU node to eight H100s             |     7 |
 | [`smarter/llmhosts/`](smarter/llmhosts/)                         | `LLMHost`           | Self-hosted open-weight models, on every inference engine that Smarter supports                    |    24 |
-| [`smarter/mcp-clients/`](smarter/mcp-clients/)                   | `MCPClient`         | Popular remote MCP servers, and the Smarter Project's own (templates)                              |    28 |
+| [`smarter/mcp-clients/`](smarter/mcp-clients/)                   | `MCPClient`         | Popular remote MCP servers, and the platform's own MCPServer (templates)                          |    28 |
 | [`smarter/plugins/static/`](smarter/plugins/static/)             | `Plugin`            | Plugins that answer from data in the manifest                                                      |     2 |
 | [`smarter/plugins/skill/`](smarter/plugins/skill/)               | `SkillPlugin`       | Skills: code review, meeting notes, SQL analysis, PDF files, and more                              |     7 |
 | [`smarter/plugins/websearch/`](smarter/plugins/websearch/)       | `WebsearchPlugin`   | Web search and web page reading                                                                    |     7 |
@@ -109,7 +109,7 @@ placeholders are filled in with the values of the platform that applies it:
 | `${environment_platform_scheme}` | `https`, or `http` in a local development environment                           |
 | `${environment_platform_domain}` | The platform's domain, e.g. `platform.example.com`, or `localhost:9357` locally |
 
-So a resource can reach the platform that it runs on, e.g. the Smarter Project MCP server, rather than a hard-coded
+So a resource can reach the platform that it runs on, e.g. the platform's own MCPServer, rather than a hard-coded
 host. Use no other placeholder, and write a literal `$` as `$$`: a template with any other `$` stops the whole
 repository from loading. To apply a template by hand, replace its placeholders and save it as `.yaml`.
 

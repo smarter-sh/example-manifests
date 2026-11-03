@@ -11,8 +11,8 @@ metadata:
     - code
   annotations:
     smarter.sh/llmclient/use-case: codebase question answering
-    smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-11-02'
+    smarter.sh/llmclient/showcases: MCPClient, the MCPServer's public tools, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-11-03'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -23,11 +23,11 @@ spec:
       - https://lawrencemcdaniel.com
       appAssistant: Sam
       appExamplePrompts:
-      - How does Smarter keep passwords and email addresses out of the pod logs that its Operations MCP server searches?
+      - How does Smarter keep passwords and email addresses out of the pod logs that its MCPServer's staff-only tools search?
       - Write an MCPClient manifest for an MCP server that needs an API key.
       - Show me a diagram of how Smarter's network policies isolate its pods.
       - How do I add a Smarter chatbot to my WordPress site?
-      - How do I connect Claude Code to the Smarter Operations MCP server, and which of its tools would answer "why is Smarter slow right now?"
+      - How do I connect Claude Code to the MCPServer's staff-only endpoint, and which of its tools would answer "why is Smarter slow right now?"
       appFileAttachment: false
       appInfoUrl: https://docs.smarter.sh
       appName: Smarter Developer Guide
@@ -42,7 +42,7 @@ spec:
         extension, chat component and cloud infrastructure. You help developers who want to understand,
         extend or contribute to it.
 
-        Answer from the smarter_project MCP server, which searches and reads every repository of The
+        Answer from the smarter_project MCPClient, which searches and reads every repository of The
         Smarter Project, and its blog, never from memory, which may be outdated. First search, in one
         round of tool calls, the documentation for concepts and conventions, the code for how something
         is implemented, and the blog for why a design was chosen, its limits and what changed in a
@@ -54,8 +54,8 @@ spec:
         call get_manifest_schema for its kind, and use only the fields that it lists. If the tools do not
         answer the question, say so. DO NOT INVENT file names, classes, settings or manifest fields.
 
-        You can read the code and documentation of the Smarter Operations MCP server, but you cannot use
-        it: its tools read a platform's pod logs, health and users, for that platform's staff only. You
+        You can read the code and documentation of the MCPServer's staff-only tools, but you cannot use
+        them: they read a platform's pod logs, health and users, for that platform's staff only. You
         cannot see any platform's logs, health or users. When asked whether something is wrong right now,
         explain how the platform's staff would find out, with which tools, and never guess its state.
 
@@ -98,8 +98,8 @@ spec:
       typingIndicator:
         color: '#f15a29'
   plugins: []
-  # every repository of The Smarter Project, through the platform's own Smarter Project MCP server.
-  # It requires no Secret.
+  # every repository of The Smarter Project, through the public tools of the platform's own
+  # MCPServer. It requires no Secret.
   mcpClients:
     - smarter_project
   guardrails:

@@ -11,8 +11,8 @@ metadata:
     - api
   annotations:
     smarter.sh/llmclient/use-case: sdk and api support
-    smarter.sh/llmclient/showcases: MCPClient, the Smarter Project MCP server, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-10-14'
+    smarter.sh/llmclient/showcases: MCPClient, the MCPServer's public tools, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-11-03'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -39,7 +39,7 @@ spec:
         integrate their applications with the Smarter platform, through its official SDKs, its
         command-line interface, and its api.
 
-        Answer from your MCP servers, never from memory, because the SDKs change often:
+        Answer from your MCPClients, never from memory, because the SDKs change often:
         - smarter_project_github_python, smarter_project_github_nodejs and smarter_project_github_golang:
           the Python, Node.js and Go SDKs. Use the one for the user's language. If the user has not named
           a language, ask which one.
@@ -84,8 +84,8 @@ spec:
       typingIndicator:
         color: '#0969da'
   plugins: []
-  # The Smarter Project's SDKs, cli and documentation, through the platform's own Smarter Project
-  # MCP server, one MCPClient per repository. They require no Secret.
+  # The Smarter Project's SDKs, cli and documentation, through the public tools of the platform's
+  # own MCPServer, one MCPClient per repository. They require no Secret.
   mcpClients:
     - smarter_project_github_python      # smarter-sh/smarter-python
     - smarter_project_github_nodejs      # smarter-sh/smarter-nodejs

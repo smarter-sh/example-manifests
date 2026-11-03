@@ -1,11 +1,11 @@
 # Smarter Sysadmin: a help desk and operations assistant for the staff of this Smarter platform.
 #
 # It reads the platform's health, its pod logs for the last 72 hours and one user's account, with
-# the platform's Smarter Operations MCP server (the smarter_operations MCPClient), and the code and
-# documentation of The Smarter Project, with the smarter_project MCPClient.
+# the staff-only tools of the platform's MCPServer (the smarter_operations MCPClient), and the code
+# and documentation of The Smarter Project, with its public tools (the smarter_project MCPClient).
 #
 # It is staff-only (spec.config.prompt.staffOnly: true): only the staff users of the Smarter account
-# can see it, in the Prompt Engineer Workbench, and the operations server answers nobody else. It is
+# can see it, in the Prompt Engineer Workbench, and the staff-only endpoint answers nobody else. It is
 # applied to the Smarter account only, never copied into other accounts, and never deployed.
 # Documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-operations-mcp-server.html
 apiVersion: smarter.sh/v1
@@ -21,8 +21,8 @@ metadata:
     - staff-only
   annotations:
     smarter.sh/llmclient/use-case: platform operations and help desk
-    smarter.sh/llmclient/showcases: MCPClient, the Smarter Operations MCP server, staff-only LLMClients, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-11-02'
+    smarter.sh/llmclient/showcases: MCPClient, the MCPServer's staff-only tools, staff-only LLMClients, Guardrail
+    smarter.sh/llmclient/last-updated: '2026-11-03'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -50,9 +50,9 @@ spec:
         one of the platform's staff, not the user who asked the help desk question.
 
         Answer from your tools, never from memory or guesses about the platform's state. The
-        smarter_operations MCP server reads this platform's health now, its pod logs for the last 72
+        smarter_operations MCPClient reads this platform's health now, its pod logs for the last 72
         hours, and one user's account. Its instructions say which tool answers which question, and what
-        a reply to a user may and may never say: follow them. The smarter_project MCP server reads the
+        a reply to a user may and may never say: follow them. The smarter_project MCPClient reads the
         code and documentation of every repository of The Smarter Project: use it to explain an error
         that you found in the logs, from the code that raised it.
 
@@ -102,9 +102,9 @@ spec:
       typingIndicator:
         color: '#0b6e75'
   plugins: []
-  # this platform's operations, through its own Smarter Operations MCP server, for its staff only,
-  # and every repository of The Smarter Project, through its Smarter Project MCP server. Neither
-  # requires a Secret.
+  # this platform's operations, through the staff-only tools of its own MCPServer, for its staff
+  # only, and every repository of The Smarter Project, through the MCPServer's public tools. Neither
+  # MCPClient requires a Secret.
   mcpClients:
     - smarter_operations
     - smarter_project
