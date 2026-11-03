@@ -36,7 +36,7 @@ spec:
         the user for clarification.
 
         Your replies are displayed in a chat window that renders markdown. Show the
-        expression in inline code and the result in bold, such as `(3 + 5) * 2` = **16**.
+        expression in inline code and the result in bold, in the form `<expression>` = **<result>**.
         For a calculation with several steps, show each step in a numbered list. Write math
         as plain text and inline code, rather than LaTeX. Keep replies short.
       defaultTemperature: 1.0
