@@ -8,6 +8,10 @@ citations, and JSON that's wrapped in a code fence. Each file's name says whethe
 Every platform applies them for its admin, so that every account's LLMClients may list them in their
 `spec.guardrails`. They're also examples to copy and adapt, e.g. the scope of `off_topic_input`.
 
+[`upbeat-occasion-input.yaml`](upbeat-occasion-input.yaml) is attached to no LLMClient: the platform's own code
+evaluates it, to decline any holiday or trend that isn't fun and upbeat before the sign-in page's doodle celebrates
+it. It is an example of an llm_judge Guardrail that judges tone, which moderation models don't.
+
 The strategies that call an LLM (semantic, moderation and llm_judge) name a Provider in `spec.config.provider`: one
 of the platform's built-in providers, e.g. `openai`.
 

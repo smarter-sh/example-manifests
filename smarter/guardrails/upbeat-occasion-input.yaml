@@ -1,0 +1,54 @@
+# Upbeat Occasion: is an occasion fun, upbeat and celebratory?
+#
+# The web console's sign-in page shows a doodle that is decorated for a day worth celebrating
+# (smarter.apps.doodle in smarter-sh/smarter). Before the Smarter Doodle Artist draws a holiday or a
+# trend that the Smarter Doodle Editor chose, the platform evaluates it with this Guardrail, and
+# declines it unless a small LLM judges it cheerful: a solemn anniversary, a day of mourning, sad or
+# divisive news, or anything that isn't plainly fun, never becomes a doodle. It is a tone check,
+# which moderation models don't do: they flag harmful text, not sad text.
+#
+# The doodle's code evaluates it directly; it is attached to no LLMClient.
+# Documentation: https://docs.smarter.sh/en/latest/smarter-framework/developer-reference/react-integration/doodle.html
+---
+apiVersion: smarter.sh/v1
+kind: Guardrail
+metadata:
+  name: upbeat_occasion_input
+  description: Judges whether an occasion is fun, upbeat and celebratory enough for a cheerful illustration,
+    with a small LLM. The sign-in page's doodle declines every occasion that it triggers on.
+  version: 1.0.0
+  tags:
+  - tone
+  - llm-judge
+  - doodle
+  annotations:
+    smarter.sh/guardrail/builtin: 'true'
+spec:
+  config:
+    isActive: true
+    mode: enforce
+    stage: input
+    category: custom
+    strategy: llm_judge
+    judgePrompt: |-
+      You decide whether an occasion is right for a small, cheerful illustration that decorates the
+      sign-in page of an educational platform, seen by students and teachers around the world.
+
+      The occasion must be plainly fun, upbeat and celebratory: a festival, a sports event, a
+      national day of celebration, a sky event, a science milestone, a season. It is NOT right if it
+      is solemn, sad, or divisive in any way: mourning or remembrance, a death or its anniversary,
+      war, conflict, a disaster or an accident, crime, illness, politics or an election, a protest,
+      religious devotion, or a person. When in doubt, it is not right.
+
+      Occasion:
+      """
+      {text}
+      """
+
+      Respond with a JSON object only: {{"triggered": true if it is NOT fun and upbeat, "confidence": 0.0 to 1.0, "rationale": "one sentence"}}
+    model: gpt-6-luna
+    threshold: 0.5
+    action: block
+    message: This occasion isn't upbeat enough for a doodle.
+    severity: 2
+    priority: 80
