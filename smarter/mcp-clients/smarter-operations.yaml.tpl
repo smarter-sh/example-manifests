@@ -2,7 +2,7 @@
 # The staff-only tools of this platform's MCPServer, for its staff only: the platform's health now,
 # its pod logs for the last 72 hours, and one user's account, for answering help desk questions such
 # as "my login isn't working" or "why is Smarter slow right now?". This MCPClient connects to the
-# MCPServer's staff-only endpoint, /api/v1/mcp/smarter-operations/, and allows all seven of its tools.
+# MCPServer's staff-only endpoint, /api/v1/mcp/smarter-operations/, and allows all eight of its tools.
 # Documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-operations-mcp-server.html
 #
 # It requires no Secret. When an LLMClient calls this platform's own staff-only endpoint, the platform
@@ -16,14 +16,15 @@
 # smarter_settings.environment_platform_domain, so that this MCPClient connects to the MCPServer
 # of its own platform.
 #
-# Its tools only read. Their results are never cached: each call is answered, and audited, for the
-# user who made it.
+# Its tools only read, except create_bug_report, which opens a GitHub issue for a bug that the staff
+# diagnosed, with the platform's GitHub token (GITHUB_TOKEN). Their results are never cached: each call
+# is answered, and audited, for the user who made it.
 apiVersion: smarter.sh/v1
 kind: MCPClient
 metadata:
   name: smarter_operations
-  description: Reads this Smarter platform's health, its pod logs and its users' accounts, for the platform's staff only.
-  version: 1.0.0
+  description: Reads this Smarter platform's health, its pod logs and its users' accounts, and reports the bugs that it finds, for the platform's staff only.
+  version: 1.1.0
   tags:
     - smarter
     - operations
@@ -44,6 +45,7 @@ spec:
       - list_log_sources
       - user_support_snapshot
       - check_reply
+      - create_bug_report
     includeInstructions: true
     timeout: 60
     cacheTtl: 3600

@@ -16,7 +16,7 @@ and domain, so that each one connects to the MCPServer of the platform that appl
   eight of its read-only tools. The `smarter-project-github*.yaml.tpl` files each connect to the public endpoint of
   one repository. They need no Secret.
 - `smarter-operations.yaml.tpl`, the `smarter_operations` MCPClient, connects to the MCPServer's staff-only endpoint,
-  and allows all seven of its tools, for the platform's staff only. It needs no Secret: the platform signs the
+  and allows all eight of its tools, including `create_bug_report`, for the platform's staff only. It needs no Secret: the platform signs the
   identity of the user who is chatting, and the endpoint refuses everyone but the platform's staff. Use it in a
   staff-only LLMClient, such as `smarter_sysadmin`.
 

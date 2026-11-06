@@ -3,7 +3,7 @@
 # platform's MCPServer, which indexes the repositories from GitHub every hour: the platform and its
 # documentation, https://docs.smarter.sh, the command-line interface, the Python, Node.js and Go
 # SDKs, the VS Code extension, the SmarterChat component, the quick start, and the cloud
-# infrastructure. It also searches and reads the blog, https://blog.smarter.sh: release
+# infrastructure, and their GitHub issues. It also searches and reads the blog, https://blog.smarter.sh: release
 # announcements, and articles about how and why Smarter was built.
 # Documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
 #
@@ -23,7 +23,7 @@ kind: MCPClient
 metadata:
   name: smarter_project
   description: Searches and reads the documentation, https://docs.smarter.sh, the source code of every GitHub repository of The Smarter Project, and the blog, https://blog.smarter.sh.
-  version: 1.0.0
+  version: 1.1.0
   tags:
     - smarter
     - documentation
@@ -46,6 +46,8 @@ spec:
       - get_manifest_schema
       - search_blog
       - read_blog_post
+      - search_issues
+      - read_issue
     includeInstructions: true
     timeout: 30
     cacheTtl: 3600
