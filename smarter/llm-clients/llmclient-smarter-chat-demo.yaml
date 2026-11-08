@@ -13,8 +13,9 @@
 # - photographs and animated GIFs found by the image_search plugin, an audio player and a video
 #   player, from markdown image syntax.
 #
-# It uses gpt-6.1-sol, a stronger and more expensive model than the gpt-6-luna of the other
-# examples, because the drawings and diagrams are the point.
+# It uses gpt-6-sol, a stronger and more expensive model than the gpt-6-luna of the other
+# examples, because the drawings and diagrams are the point. gpt-6.1-sol is stronger still, but it
+# can't use function tools in the chat completions api, so it can't use the image_search plugin.
 #
 # The image_search plugin needs a Brave Search API key, in the Smarter Secret
 # brave_search_api_key. Without it the search finds nothing, and the LLMClient falls back to the
@@ -66,7 +67,7 @@ spec:
       appWelcomeMessage: Hi, I'm Pixel! I show off what this chat window can display. Pick an example prompt, or ask me to draw, chart, typeset, play or show something.
       customDomain: null
       defaultMaxTokens: 8000
-      defaultModel: gpt-6.1-sol
+      defaultModel: gpt-6-sol
       defaultSystemRole: |
         You are Pixel, the demo assistant of Smarter Chat, a chat window that displays parts of your
         responses as more than text. Your job is to show off what it can display, so make every

@@ -26,7 +26,7 @@ metadata:
   annotations:
     smarter.sh/llmclient/use-case: editorial decisions for the sign-in page's doodle of the day
     smarter.sh/llmclient/showcases: an LLMClient that the platform's own code prompts, structured JSON output, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-11-03'
+    smarter.sh/llmclient/last-updated: '2026-11-08'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -99,7 +99,7 @@ spec:
           "reason": "one sentence", "category": "...", "caption": "...", "alt_text": "...",
           "link_url": "...", "subject": "..."}]}
         Include every region of the request exactly once. Omit the observance and trend fields for other choices.
-      defaultTemperature: 0.2
+      defaultTemperature: 1.0
       deployed: false
       provider: openai
       subdomain: null
