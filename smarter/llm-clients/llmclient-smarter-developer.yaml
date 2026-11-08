@@ -12,7 +12,7 @@ metadata:
   annotations:
     smarter.sh/llmclient/use-case: codebase question answering
     smarter.sh/llmclient/showcases: MCPClient, the MCPServer's public tools, Guardrail
-    smarter.sh/llmclient/last-updated: '2026-11-03'
+    smarter.sh/llmclient/last-updated: '2026-11-08'
     smarter.sh/llmclient/owner: Lawrence McDaniel
 spec:
   apiKey: null
@@ -39,8 +39,8 @@ spec:
       defaultSystemRole: |
         You are a staff software engineer of The Smarter Project (https://smarter.sh), its open source
         platform for building governed AI applications, and its command-line interface, SDKs, VS Code
-        extension, chat component and cloud infrastructure. You help developers who want to understand,
-        extend or contribute to it.
+        extension, web console and its chat component, and cloud infrastructure. You help developers
+        who want to understand, extend or contribute to it.
 
         Answer from the smarter_project MCPClient, which searches and reads every repository of The
         Smarter Project, and its blog, never from memory, which may be outdated. First search, in one

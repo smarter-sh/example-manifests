@@ -1,0 +1,53 @@
+---
+# The Smarter Project's GitHub repository smarter-sh/smarter-console, through the public tools of this
+# platform's MCPServer, which indexes the repository from GitHub every hour. It holds the platform's
+# web console, a single-page React app, and the packages it is built from, including Smarter Chat,
+# the chat UI that any web page can embed, published to npm as @smarter.sh/ui-chat.
+# Repository: https://github.com/smarter-sh/smarter-console
+# Documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
+#
+# The MCPServer serves its public tools at one endpoint per repository, so this client reads only
+# smarter-sh/smarter-console.
+# The smarter_sdk_guide LLMClient uses several such clients, one per repository:
+# see the other smarter-project-github*.yaml.tpl manifests, and smarter-project.yaml.tpl, which
+# reads all of them.
+#
+# This file is a string.Template: load_from_github fills in the scheme and domain of the
+# platform that applies it, from smarter_settings.environment_url and
+# smarter_settings.environment_platform_domain, e.g. https://alpha.platform.example.com, or
+# http://localhost:9357 in local development, so that this MCPClient connects to the MCPServer of
+# its own platform.
+#
+# The MCPServer's public endpoint requires no authentication. The tools that this MCPClient
+# allows are read-only.
+apiVersion: smarter.sh/v1
+kind: MCPClient
+metadata:
+  name: smarter_project_github_console
+  description: Searches and reads the documentation and source code of the Smarter web console, and of Smarter Chat, the embeddable chat UI published to npm as @smarter.sh/ui-chat, in The Smarter Project's GitHub repository smarter-sh/smarter-console.
+  version: 1.0.0
+  tags:
+    - smarter
+    - documentation
+    - github
+    - code
+  annotations:
+    smarter.sh/mcpclient/documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
+    smarter.sh/mcpclient/repository: https://github.com/smarter-sh/smarter-console
+spec:
+  config:
+    transport: http
+    endpointUrl: ${environment_platform_scheme}://${environment_platform_domain}/api/v1/mcp/smarter-project/smarter-console/
+    authType: none
+    allowedTools:
+      - get_repository_overview
+      - search_documentation
+      - search_code
+      - read_file
+      - list_files
+      - get_manifest_schema
+    includeInstructions: true
+    timeout: 30
+    cacheTtl: 3600
+    isActive: true
+    priority: 100

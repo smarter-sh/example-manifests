@@ -2,7 +2,7 @@
 # Every GitHub repository of The Smarter Project, through the public tools of this
 # platform's MCPServer, which indexes the repositories from GitHub every hour: the platform and its
 # documentation, https://docs.smarter.sh, the command-line interface, the Python, Node.js and Go
-# SDKs, the VS Code extension, the SmarterChat component, the quick start, and the cloud
+# SDKs, the VS Code extension, the web console and its Smarter Chat component, the quick start, and the cloud
 # infrastructure, and their GitHub issues. It also searches and reads the blog, https://blog.smarter.sh: release
 # announcements, and articles about how and why Smarter was built.
 # Documentation: https://docs.smarter.sh/en/latest/smarter-platform/smarter-project-mcp-server.html
