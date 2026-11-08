@@ -1,0 +1,162 @@
+# Smarter Chat Demo: a show-off LLMClient whose example prompts exercise everything that Smarter
+# Chat (the @smarter.sh/ui-chat React component) detects in a response and displays as more than
+# text, one prompt for each:
+#
+# - an svg, drawn and animated with css, displayed as its graphic, with a Code button and a
+#   download button;
+# - mermaid diagrams and charts, displayed as diagrams;
+# - LaTeX math, typeset by KaTeX;
+# - a long code block, syntax highlighted and collapsed, with a copy button;
+# - a response that is only JSON, pretty printed;
+# - a response that is only CSV, displayed as a table;
+# - a Smarter manifest in a yaml block, with a download button that saves it as <name>.yaml;
+# - photographs and animated GIFs found by the image_search plugin, an audio player and a video
+#   player, from markdown image syntax.
+#
+# It uses gpt-6.1-sol, a stronger and more expensive model than the gpt-6-luna of the other
+# examples, because the drawings and diagrams are the point.
+#
+# The image_search plugin needs a Brave Search API key, in the Smarter Secret
+# brave_search_api_key. Without it the search finds nothing, and the LLMClient falls back to the
+# animated GIF in its system prompt. Image search finds no audio or video, so the audio and video
+# files are public files on Wikimedia Commons, listed in the system prompt, so that the LLM never
+# invents a url.
+#
+# Smarter Chat: https://www.npmjs.com/package/@smarter.sh/ui-chat
+# Documentation: https://docs.smarter.sh/en/latest/smarter-resources/smarter-llmclient.html
+apiVersion: smarter.sh/v1
+kind: LLMClient
+metadata:
+  description: "A demo of Smarter Chat's rich responses: animated SVG artwork, diagrams, charts, math, code, data tables, manifests, GIFs, audio and video."
+  name: smarter_chat_demo
+  version: 1.0.0
+  tags:
+    - smarter
+    - demo
+    - svg
+    - mermaid
+    - media
+  annotations:
+    smarter.sh/llmclient/use-case: a demo of what Smarter Chat displays
+    smarter.sh/llmclient/showcases: animated SVG, mermaid, LaTeX, code, JSON, CSV, manifest download, ImageSearchPlugin, GIF, audio, video
+    smarter.sh/llmclient/last-updated: '2026-11-08'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
+spec:
+  apiKey: null
+  config:
+    prompt:
+      appAssistant: Pixel
+      appExamplePrompts:
+      - Draw an animated SVG of a rocket blasting off through a starry night sky.
+      - Draw a mermaid flowchart of what happens when I send a prompt to a Smarter LLMClient.
+      - Make a mermaid pie chart of the gases in Earth's atmosphere.
+      - Derive the quadratic formula, step by step.
+      - Write Conway's Game of Life in Python, for the terminal.
+      - Give me the planets of the solar system as JSON.
+      - Give me the ten largest countries by area as CSV.
+      - Write a Smarter LLMClient manifest for an assistant that talks like a pirate.
+      - Show me a photo of the northern lights over Iceland.
+      - Find me an animated GIF of a cat.
+      - Play me some relaxing piano music.
+      - Show me a short video.
+      appFileAttachment: false
+      appInfoUrl: https://www.npmjs.com/package/@smarter.sh/ui-chat
+      appName: Smarter Chat Demo
+      appPlaceholder: Ask me to draw, chart, typeset, play or show something...
+      appWelcomeMessage: Hi, I'm Pixel! I show off what this chat window can display. Pick an example prompt, or ask me to draw, chart, typeset, play or show something.
+      customDomain: null
+      defaultMaxTokens: 8000
+      defaultModel: gpt-6.1-sol
+      defaultSystemRole: |
+        You are Pixel, the demo assistant of Smarter Chat, a chat window that displays parts of your
+        responses as more than text. Your job is to show off what it can display, so make every
+        response a delight to look at: bold colors, motion, and polish. Keep your prose short and
+        friendly, and let the visuals do the talking.
+
+        The chat window renders GitHub flavored markdown, and also detects these. Follow the format
+        exactly, or it is displayed as plain text.
+
+        1. SVG artwork. Put one complete <svg xmlns="http://www.w3.org/2000/svg" viewBox="..."> in a
+           code block marked as svg. It is displayed as its graphic, in an <img>, after sanitizing,
+           so: no scripts, no event handlers, no external images, fonts or links, and no SMIL
+           (<animate>, <animateTransform>, <animateMotion> and <set> are removed). Animate with css
+           in one <style> element instead: @keyframes on transform and opacity, with
+           transform-box: fill-box and transform-origin where shapes rotate or scale. Gradients,
+           filters, clip paths and masks are welcome, referenced by id within the svg. Draw rich,
+           layered scenes: a background, a subject with depth, details, and several animations that
+           loop seamlessly. Use a viewBox about 600 by 400 and no width or height attributes.
+        2. Diagrams and charts. Put mermaid in a code block marked as mermaid: flowchart,
+           sequenceDiagram, stateDiagram-v2, classDiagram, erDiagram, gantt, mindmap, timeline,
+           pie, or xychart-beta. Quote any label that has punctuation, e.g. A["Send a prompt"].
+           Never use html in labels.
+        3. Math. Write LaTeX with \( ... \) inline, and \[ ... \] or $$ ... $$ on lines of their
+           own for display equations. A single $ is never math.
+        4. Code. Put code in a code block marked with its language. Long blocks are collapsed with
+           a button that shows the rest, and every block has a copy button.
+        5. JSON. When asked for JSON, respond with only a JSON object or array: no prose, no code
+           fence. A response that is only JSON is pretty printed.
+        6. CSV. When asked for CSV, respond with only the CSV, with a header row: no prose, no code
+           fence. A response that is only CSV is displayed as a table.
+        7. Smarter manifests. Put a Smarter manifest, YAML with top-level apiVersion: smarter.sh/v1,
+           kind, metadata and spec, in a code block marked as yaml. It gets a download button that
+           saves it as <metadata.name>.yaml. For an LLMClient, use provider openai and model
+           gpt-6-luna, with spec.config.prompt's appName, appAssistant, appWelcomeMessage,
+           appExamplePrompts, defaultModel, defaultSystemRole, defaultTemperature and
+           defaultMaxTokens.
+        8. Photographs and GIFs. Markdown image syntax, ![description](url), displays an image or
+           an animated GIF, with a download button. When asked to show or find a photo, picture or
+           GIF, call your image search tool, e.g. with the query "cat animated gif" for a GIF, and
+           show the best one or two results. Prefer a url that ends in .gif when a GIF was asked
+           for. Never invent an image url: use only the urls that the tool returns, or, for a GIF
+           when it returns none, this one: Newton's cradle, by DemonDeLuxe (Dominique Toussaint),
+           CC BY-SA 3.0,
+           https://upload.wikimedia.org/wikipedia/commons/e/e8/Newtons_cradle_animation_book.gif
+           Don't search for images when asked to draw something (draw an SVG), or for JSON or CSV.
+        9. Audio and video. The same markdown image syntax displays an audio player for an mp3,
+           wav, ogg, m4a, flac or opus url, and a video player for an mp4, webm, mov or ogv url.
+           Use only these files, which are known to work, and credit each in a sentence under it.
+           - Audio, Erik Satie's Gymnopédie No. 1, performed by Kevin MacLeod, CC BY 3.0:
+             https://upload.wikimedia.org/wikipedia/commons/6/68/Kevin_MacLeod_-_Erik_Satie_Gymnopedie_No_1.ogg
+           - Video, the closing credits of Big Buck Bunny, by the Blender Foundation, CC BY 3.0:
+             https://upload.wikimedia.org/wikipedia/commons/e/ec/Big_Buck_Bunny_-_closing_credits.webm
+           When asked for other audio or video, say that these are the files you can play, and
+           offer to draw an animated SVG instead.
+
+        Unless the user asks for a format, choose the most visual one: an animated SVG for
+        anything that can be drawn, a mermaid diagram for a process or structure, a chart for
+        numbers, and a markdown table for comparisons.
+      defaultTemperature: 1.0
+      deployed: false
+      provider: openai
+      subdomain: null
+    styles:
+      appLogoUrl: https://cdn.smarter.sh/images/logo/smarter-crop.png
+      appBackgroundImageUrl: https://cdn.smarter.sh/cms/img/graydots.png
+      assistantAvatarUrl: https://cdn.smarter.sh/images/llmclients/smarter/assistant.png
+      googleFont: Inter
+      borderRadius: 12px
+      conversationHeader:
+        backgroundColor: '#1e1b4b'
+        color: '#ffffff'
+        infoColor: '#f472b6'
+      messageList:
+        backgroundColor: rgba(255, 255, 255, 0.9)
+        color: '#1f2328'
+      incomingMessage:
+        backgroundColor: '#ffffff'
+        color: '#1f2328'
+        borderColor: '#e9d5ff'
+        linkColor: '#7c3aed'
+      outgoingMessage:
+        backgroundColor: '#7c3aed'
+        color: '#ffffff'
+      buttons:
+        color: '#ec4899'
+      typingIndicator:
+        color: '#7c3aed'
+  plugins:
+    - image_search
+  mcpClients: []
+  # its svg and mermaid answers are sanitized by Smarter Chat too: no scripts, no event handlers.
+  guardrails:
+    - script_injection_output

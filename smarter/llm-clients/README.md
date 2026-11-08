@@ -3,7 +3,8 @@
 Example LLMClients, from a minimal one, [`llmclient-simple.yaml`](llmclient-simple.yaml), and pass-throughs to
 OpenAI, Google AI and Meta AI, to assistants that combine plugins, MCPClients, extensions and Guardrails: a customer
 support agent, a research analyst, a data analyst, a repository explorer, a math tutor, a Smarter developer, and
-more.
+more. [`llmclient-smarter-chat-demo.yaml`](llmclient-smarter-chat-demo.yaml) shows off what the chat window displays:
+animated SVG artwork, mermaid diagrams and charts, math, code, JSON, CSV tables, manifests, GIFs, audio and video.
 
 They name resources by name, and every one of them is in this repository (plugins, MCPClients, Guardrails) or is one
 of the platform's built-in Providers. Some also list Smarter Extensions, e.g. `weather` or `calculator`, which the
