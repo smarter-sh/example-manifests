@@ -5,3 +5,15 @@
 venv/
 .claude/settings.local.json
 .env
+
+# Python run-time artifacts
+# -------------------------------------
+.pypi_cache
+__pycache__
+.pytest_cache
+venv
+.venv
+.pytest_cache
+*.pyc
+*.pyo
+*.pyd
