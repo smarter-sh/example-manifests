@@ -23,13 +23,13 @@ spec:
       appAssistant: Lawrence
       appExamplePrompts:
       - What is the weather in San Francisco?
-      - I was born December 31, 1966. How many days old am I?
-      - What courses does Stackademy offer about web development?
+      - I might fly to Seattle this afternoon. What should I pack?
+      - I'm in Boston for the day. What would be good to do?
       appFileAttachment: false
       appInfoUrl: https://smarter.sh
-      appName: Weather LLMClient
+      appName: Smarter Weather Forecaster
       appPlaceholder: Ask me about the weather...
-      appWelcomeMessage: Welcome to the Weather LLMClient! How can I help you today?
+      appWelcomeMessage: Welcome to the Smarter Weather Forecaster! How can I help you today?
       customDomain: null
       defaultMaxTokens: 4096
       defaultModel: gpt-6-luna
