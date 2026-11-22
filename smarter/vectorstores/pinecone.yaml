@@ -1,6 +1,6 @@
 # A Pinecone serverless vector database. Its API key is in the ApiConnection pinecone, which
 # `manage.py initialize_vectorstore_providers` creates from the environment variable
-# PINECONE_API_KEY. Pinecone backups, the snapshots of a Pinecone index, need a paid plan:
+# APP_VECTORSTORE_PINECONE_API_KEY. Pinecone backups, the snapshots of a Pinecone index, need a paid plan:
 # set maintenance.snapshots to false on the free Starter plan.
 apiVersion: smarter.sh/v1
 kind: Vectorstore

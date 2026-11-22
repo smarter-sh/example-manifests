@@ -1,6 +1,6 @@
 # A Qdrant Cloud vector database. Its cluster's URL and API key are in the ApiConnection
 # qdrant_cloud, which `manage.py initialize_vectorstore_providers` creates from the environment
-# variables QDRANT_CLOUD_URL and QDRANT_CLOUD_API_KEY. Qdrant Cloud takes snapshots too, and
+# variables APP_VECTORSTORE_QDRANT_CLOUD_URL and APP_VECTORSTORE_QDRANT_CLOUD_API_KEY. Qdrant Cloud takes snapshots too, and
 # restores them in its own console.
 apiVersion: smarter.sh/v1
 kind: Vectorstore
