@@ -1,0 +1,117 @@
+# Smarter LLM Price Checker: reads the LLM providers' pricing pages, and keeps the platform's LLM prices up to date.
+#
+# Every charge that a prompt makes is priced with the platform's LLM prices, in USD per million
+# tokens, which budgets that measure cost compare to their limits. Every week, the platform
+# (smarter.apps.account.llm_price_checker) fetches each provider's pricing page, converts it to
+# Markdown, and prompts this LLMClient with JSON: the page, and the models whose prices it
+# publishes. It answers with JSON: each model's standard price per million input and output tokens.
+# The platform checks every price again: both numbers must be written on the page, and a price may
+# change by at most a factor of three, so it can't invent or misread a price. It never changes a
+# price that a person set in the Django admin.
+#
+# It is staff-only: it is applied to the Smarter account only, never copied into other accounts,
+# and never deployed. The waffle switch enable_llm_price_checker turns it on.
+# Documentation: https://docs.smarter.sh/en/latest/smarter-platform/system-administration/costs-and-auditing/cost-accounting.html
+apiVersion: smarter.sh/v1
+kind: LLMClient
+metadata:
+  description: "Reads the LLM providers' pricing pages every week, and answers with each model's standard price per million input and output tokens, so that the platform's LLM prices stay up to date."
+  name: smarter_llm_price_checker
+  version: 1.0.0
+  tags:
+    - smarter
+    - pricing
+    - staff-only
+  annotations:
+    smarter.sh/llmclient/use-case: reading LLM prices from providers' pricing pages
+    smarter.sh/llmclient/showcases: an LLMClient that the platform's own code prompts, structured JSON output, data extraction from a web page
+    smarter.sh/llmclient/last-updated: '2026-11-23'
+    smarter.sh/llmclient/owner: Lawrence McDaniel
+spec:
+  apiKey: null
+  config:
+    prompt:
+      staffOnly: true
+      appAssistant: Penny
+      appExamplePrompts:
+      - '{"url": "https://platform.claude.com/docs/en/about-claude/pricing", "models": [{"provider": "anthropic", "model": "claude-sonnet-4-6", "input": "3.00", "output": "15.00"}], "page": "| Model | Base Input Tokens | 5m Cache Writes | 1h Cache Writes | Cache Hits & Refreshes | Output Tokens |\n| --- | --- | --- | --- | --- | --- |\n| Claude Sonnet 4.6 | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |"}'
+      appFileAttachment: false
+      appInfoUrl: https://docs.smarter.sh/en/latest/smarter-platform/system-administration/costs-and-auditing/cost-accounting.html
+      appName: Smarter LLM Price Checker
+      appPlaceholder: Paste the platform's JSON request...
+      appWelcomeMessage: I read LLM providers' pricing pages. Paste a request from the platform, and I'll answer with each model's standard price, as JSON.
+      customDomain: null
+      defaultMaxTokens: 4096
+      defaultModel: gpt-6-luna
+      defaultSystemRole: |
+        You read LLM providers' pricing pages for The Smarter Project (https://smarter.sh), an open
+        source, no-code AI authoring platform designed for instructional use. The platform prices
+        every prompt that its users send with the prices that you read, so read them exactly.
+
+        You receive one JSON object:
+        - url: the pricing page's url.
+        - models: the models whose prices you must find, each with its provider, its model name as
+          the provider's api names it (e.g. gpt-6-luna, claude-sonnet-4-6, openai/gpt-oss-120b),
+          and the input and output prices that the platform has now, in USD per million tokens.
+          They may be null.
+        - page: the pricing page, as Markdown. Its tables keep their rows and columns.
+
+        For each model, find its standard price on the page: the price of an ordinary, real-time
+        api request, in USD per million input tokens and per million output tokens. A page often
+        shows a model's name differently from its api name, e.g. "Claude Sonnet 4.6" for
+        claude-sonnet-4-6, or "GPT-6 Luna" for gpt-6-luna. Match the model exactly: never a model
+        of another version, size or variant, e.g. never gpt-6.1-sol for gpt-6-sol, or a "mini" for
+        the full model.
+
+        Never use any of these, which are not the standard price:
+        - batch, flex, fast, priority, ultrafast, reserved, provisioned or scale tier prices;
+        - cached input, cache writes, cache hits or prompt caching prices;
+        - regional, data residency or long-context prices, e.g. those above 200K tokens;
+        - fine-tuning, training, audio, image, embedding or realtime prices;
+        - a promotional price that has an end date, when the page also gives the price after it.
+
+        When a page gives prices per thousand tokens, don't convert them: answer found=false. Never
+        compute, round or estimate a price. Each price that you give must be written on the page,
+        as a dollar amount. When you are not sure, answer found=false: the platform then keeps its
+        current price, which is always safe.
+
+        Answer with one JSON object only, no prose and no code fence:
+        {"prices": [{"provider": "...", "model": "...", "found": true | false,
+          "input": "3.00" or null, "output": "15.00" or null,
+          "evidence": "the words of the page that give the price, at most 200 characters"}]}
+        Include every model of the request exactly once, with its provider and model exactly as the
+        request names them.
+      defaultTemperature: 1.0
+      deployed: false
+      provider: openai
+      subdomain: null
+    styles:
+      appLogoUrl: https://cdn.smarter.sh/images/logo/smarter-crop.png
+      appBackgroundImageUrl: https://cdn.smarter.sh/cms/img/graydots.png
+      assistantAvatarUrl: https://cdn.smarter.sh/images/llmclients/smarter/assistant.png
+      googleFont: Inter
+      borderRadius: 8px
+      conversationHeader:
+        backgroundColor: '#2a1c5a'
+        color: '#ffffff'
+        infoColor: '#ffc145'
+      messageList:
+        backgroundColor: rgba(255, 255, 255, 0.88)
+        color: '#1f2328'
+      incomingMessage:
+        backgroundColor: '#f6f8fa'
+        color: '#1f2328'
+        borderColor: '#d0d7de'
+        linkColor: '#6c5ce7'
+      outgoingMessage:
+        backgroundColor: '#6c5ce7'
+        color: '#ffffff'
+      buttons:
+        color: '#6c5ce7'
+      typingIndicator:
+        color: '#6c5ce7'
+  plugins: []
+  mcpClients: []
+  # its answer is parsed as JSON.
+  guardrails:
+    - json_code_fence_output

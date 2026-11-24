@@ -14,7 +14,7 @@ with a warning, rather than applied.
 Every platform applies them for its admin, and deploys them, except in a local development environment, where they're
 only applied. Each new account gets its own copy. An LLMClient that already exists keeps its `deployed` value.
 
-Three are the exception. They are staff-only (`spec.config.prompt.staffOnly: true`): only the platform's staff, the
+Four are the exception. They are staff-only (`spec.config.prompt.staffOnly: true`): only the platform's staff, the
 staff users of the Smarter account, can see them, and they are applied to the Smarter account only, never copied into
 another account, and never deployed.
 
@@ -24,6 +24,9 @@ another account, and never deployed.
   [`llmclient-smarter-doodle-artist.yaml`](llmclient-smarter-doodle-artist.yaml), which the platform's own code
   prompts: they choose and draw the doodle of the day on the web console's sign-in page. The editor answers with
   JSON, and the artist with SVG.
+- [`llmclient-smarter-llm-price-checker.yaml`](llmclient-smarter-llm-price-checker.yaml), which the platform's own
+  code prompts every week with an LLM provider's pricing page: it answers with each model's standard price, as JSON,
+  which keeps the platform's LLM prices up to date.
 
 The Stackademy LLMClients, which use a private database through a SqlPlugin, are in their own repository,
 https://github.com/smarter-sh/stackademy.
